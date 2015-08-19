@@ -8,6 +8,7 @@
 
 /* Begin PBXFileReference section */
 		426FB3531B851FF80080D9E7 /* app.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = app.js; sourceTree = "<group>"; };
+		426FB3541B852CEE0080D9E7 /* package.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -15,6 +16,7 @@
 			isa = PBXGroup;
 			children = (
 				426FB3531B851FF80080D9E7 /* app.js */,
+				426FB3541B852CEE0080D9E7 /* package.json */,
 			);
 			sourceTree = "<group>";
 		};
