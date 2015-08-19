@@ -26,7 +26,7 @@
 			attributes = {
 				LastUpgradeCheck = 0640;
 			};
-			buildConfigurationList = 426FB3501B851FC90080D9E7 /* Build configuration list for PBXProject "SuomoSurvey" */;
+			buildConfigurationList = 426FB3501B851FC90080D9E7 /* Build configuration list for PBXProject "survey-example" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -57,7 +57,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		426FB3501B851FC90080D9E7 /* Build configuration list for PBXProject "SuomoSurvey" */ = {
+		426FB3501B851FC90080D9E7 /* Build configuration list for PBXProject "survey-example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				426FB3511B851FC90080D9E7 /* Debug */,

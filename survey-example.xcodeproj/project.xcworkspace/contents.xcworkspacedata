@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:SuomoSurvey.xcodeproj">
+      location = "self:/Users/jbrewer/Documents/Code/Servers/Suomo/SuomoSurvey/survey-example.xcodeproj">
    </FileRef>
 </Workspace>
