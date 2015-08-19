@@ -1,1 +1,1 @@
-// Survey app for Suomome
+// Survey app: Node, MySQL
