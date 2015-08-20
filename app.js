@@ -38,7 +38,7 @@ Question.hasMany(Choice, {as: 'Choices'});
 // question.setChoices([choice]);
 */
 
-var SVY_User = {};
+var SVY_User = {username:null,password:null};
 
 app.get('/users', function(req, res) {
     res.send(200, SVY_User);
