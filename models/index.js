@@ -26,8 +26,7 @@ module.exports = function() {
       }
     });
 
-    return {
-        db: db,
-        sequelize: sequelize,
-    };
+    db.sequelize = sequelize;
+    
+    return db;
 };
