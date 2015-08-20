@@ -59,9 +59,9 @@ var Answer = sequelize.define("Answer", {
 });
 
 Question.hasMany(Choice, {as: 'Choices'});
-question.setChoices([choice]);
+// question.setChoices([choice]);
 
-});
+
 
 app.get('/users', function(req, res) {
     
@@ -74,14 +74,15 @@ function initUsers()
         // insert new user
         User.create({
             username: "guest",
-            password: "guest";
+            password: "guest",
         }).success(function(user) {
             // you can now access the newly created user via the variable user
             console.log('User: ' + user);
         });
     });
-}();
+}
 
 // initializing a port
 app.listen(APP_PORT);
 console.log('...listending on port ' + APP_PORT);
+initUsers();
