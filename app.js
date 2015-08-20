@@ -1,39 +1,15 @@
 // Survey app: Node, MySQL
 
 var app = require('express')(),
-    crypto = require('crypto'),
-    Sequelize = require('sequelize');
+    crypto = require('crypto');
+
+var db = require('./models');
 
 // Environment
 var SVY_SQLPORT = 2835,
     APP_PORT = 4227;
 
-// var sequelize = new Sequelize('mysql://localhost:' + SVY_SQLPORT + '/survey');
-var sequelize = new Sequelize('survey', null, null, {
-    dialect: 'mysql'
-});
-
-// model definition
-var User = sequelize.define("User", {
-//    user_id: Sequelize.INT,
-    username: Sequelize.STRING,
-    password: Sequelize.STRING,
-}, {
-    instanceMethods: {
-        add: function(onSuccess, onError) {
-            var username = this.username;
-            var password = this.password;
-            
-            var shasum = crypto.createHash('sha1');
-            shasum.update(password);
-            password = shasum.digest('hex');
-            
-            User.build({ username: username, password: password })
-                .save().success(onSuccess).error(onError);
-        },
-    }
-});
-
+/*
 var Question = sequelize.define("Question", {
     question_id: Sequelize.INTEGER,
     question: Sequelize.STRING,
@@ -60,25 +36,39 @@ var Answer = sequelize.define("Answer", {
 
 Question.hasMany(Choice, {as: 'Choices'});
 // question.setChoices([choice]);
+*/
 
-
+var SVY_User = {};
 
 app.get('/users', function(req, res) {
-    
+    res.send(200, SVY_User);
 });
 
 function initUsers()
 {
     //sync the model with the database
-    sequelize.sync({ force: true }).success(function(err) {
-        // insert new user
-        User.create({
-            username: "guest",
-            password: "guest",
-        }).success(function(user) {
-            // you can now access the newly created user via the variable user
-            console.log('User: ' + user);
-        });
+    db.sequelize.sync({ force: true }).complete(function(err) {
+    
+        if (err)
+        {
+            throw(err[0]);
+        }
+        else
+        {
+            console.log("DB Synch'd...");
+            var User = db.User;
+            var user = User.addUser("guest", "guest", function(err, newUser) {
+                if (newUser)
+                {
+                    console.log(newUser);
+                    SVY_User = newUser;
+                }
+                else
+                {
+                    console.log('ERROR: ' + err);
+                }
+            });
+        }
     });
 }
 

@@ -9,6 +9,8 @@
 /* Begin PBXFileReference section */
 		426FB3531B851FF80080D9E7 /* app.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = app.js; sourceTree = "<group>"; };
 		426FB3541B852CEE0080D9E7 /* package.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
+		426FB3561B86330B0080D9E7 /* index.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = index.js; path = models/index.js; sourceTree = "<group>"; };
+		426FB3571B8633FA0080D9E7 /* User.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = User.js; path = models/User.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -16,8 +18,18 @@
 			isa = PBXGroup;
 			children = (
 				426FB3531B851FF80080D9E7 /* app.js */,
+				426FB3551B8632EA0080D9E7 /* models */,
 				426FB3541B852CEE0080D9E7 /* package.json */,
 			);
+			sourceTree = "<group>";
+		};
+		426FB3551B8632EA0080D9E7 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				426FB3561B86330B0080D9E7 /* index.js */,
+				426FB3571B8633FA0080D9E7 /* User.js */,
+			);
+			name = models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
