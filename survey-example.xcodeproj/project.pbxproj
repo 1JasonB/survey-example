@@ -11,8 +11,8 @@
 		426FB3541B852CEE0080D9E7 /* package.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
 		426FB3561B86330B0080D9E7 /* index.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = index.js; path = models/index.js; sourceTree = "<group>"; };
 		426FB3571B8633FA0080D9E7 /* User.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = User.js; path = models/User.js; sourceTree = "<group>"; };
-		426FB3591B865F2F0080D9E7 /* index.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; name = index.ejs; path = www/index.ejs; sourceTree = "<group>"; };
-		426FB35A1B865F740080D9E7 /* appClient.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = appClient.js; path = www/appClient.js; sourceTree = "<group>"; };
+		426FB3591B865F2F0080D9E7 /* index.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = index.ejs; sourceTree = "<group>"; };
+		426FB35A1B865F740080D9E7 /* appClient.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = appClient.js; path = javascripts/appClient.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -39,17 +39,17 @@
 		426FB3581B865F0D0080D9E7 /* public */ = {
 			isa = PBXGroup;
 			children = (
-				426FB35B1B867EB20080D9E7 /* js */,
+				426FB35B1B867EB20080D9E7 /* javascripts */,
 			);
-			name = public;
+			path = public;
 			sourceTree = "<group>";
 		};
-		426FB35B1B867EB20080D9E7 /* js */ = {
+		426FB35B1B867EB20080D9E7 /* javascripts */ = {
 			isa = PBXGroup;
 			children = (
 				426FB35A1B865F740080D9E7 /* appClient.js */,
 			);
-			name = js;
+			name = javascripts;
 			sourceTree = "<group>";
 		};
 		426FB35C1B867EC00080D9E7 /* views */ = {
@@ -57,7 +57,7 @@
 			children = (
 				426FB3591B865F2F0080D9E7 /* index.ejs */,
 			);
-			name = views;
+			path = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
