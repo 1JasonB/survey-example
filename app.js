@@ -35,9 +35,9 @@ var User = sequelize.define("User", {
 });
 
 var Question = sequelize.define("Question", {
-    question_id: Sequelize.INT,
+    question_id: Sequelize.INTEGER,
     question: Sequelize.STRING,
-    count: Sequelize.INT,
+    count: Sequelize.INTEGER,
 }, {
     instanceMethods: {
         getChoices: function(question_id, onSuccess, onError) {
@@ -48,14 +48,14 @@ var Question = sequelize.define("Question", {
 
 var Choice = sequelize.define("Choice", {
     choice: Sequelize.STRING,
-    question_id: Sequelize.INT,
-    count: Sequelize.INT,
+    question_id: Sequelize.INTEGER,
+    count: Sequelize.INTEGER,
 });
 
 var Answer = sequelize.define("Answer", {
-    user_id: Sequelize.INT,
-    choice_id: Sequelize.INT,
-    question_id: Sequelize.INT,
+    user_id: Sequelize.INTEGER,
+    choice_id: Sequelize.INTEGER,
+    question_id: Sequelize.INTEGER,
 });
 
 Question.hasMany(Choice, {as: 'Choices'});
