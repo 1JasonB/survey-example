@@ -15,7 +15,9 @@ module.exports = function() {
         db = {};
 
     models.forEach(function(model) {
-      db[model] = sequelize.import(__dirname + '/' + model);
+        var path = __dirname + '/' + model;
+        db[model] = sequelize.import(path);
+        console.log('...importing model, ' + model + ', from ' + path);
     });
 
     Object.keys(db).forEach(function(modelName) {

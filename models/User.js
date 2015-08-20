@@ -21,7 +21,7 @@ module.exports = function(sequelize, DataTypes) {
                 }).catch(function(error) {
                     callback(error, null);
                 });
-            };
+            },
         }
     });
     
