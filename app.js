@@ -49,32 +49,25 @@ function initUsers()
     //sync the model with the database
     db.sequelize.sync({ force: true }).then(function() {
     
-        if (err)
-        {
-            throw(err[0]);
-        }
-        else
-        {
-            console.log("DB Synch'd...");
-            var User = db.User;
-            var user = User.addUser("guest", "guest", function(err, newUser) {
-                if (newUser)
-                {
-                    console.log(newUser);
-                    SVY_User = newUser;
-                }
-                else
-                {
-                    console.log('ERROR: ' + err);
-                }
-            });
-        }
+        console.log("DB Synch'd...");
+        var User = db.User;
+        var user = User.addUser("guest", "guest", function(err, newUser) {
+            if (newUser)
+            {
+                console.log(newUser);
+                SVY_User = newUser;
+            }
+            else
+            {
+                console.log('ERROR: ' + err);
+            }
+        });
     }).catch(function(err) {
-        console.log('ERROR: ' + err);        
+        console.log('ERROR: ' + err);
     });
 }
 
 // initializing a port
 app.listen(APP_PORT);
-console.log('...listending on port ' + APP_PORT);
+console.log('...listening on port ' + APP_PORT);
 initUsers();
