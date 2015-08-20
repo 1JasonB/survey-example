@@ -3,7 +3,7 @@
 var app = require('express')(),
     crypto = require('crypto');
 
-var db = require('./models');
+var db = require('./models/index')();
 
 // Environment
 var SVY_SQLPORT = 2835,
@@ -47,7 +47,7 @@ app.get('/users', function(req, res) {
 function initUsers()
 {
     //sync the model with the database
-    db.sequelize.sync({ force: true }).complete(function(err) {
+    db.sequelize.sync({ force: true }).then(function() {
     
         if (err)
         {
@@ -69,6 +69,8 @@ function initUsers()
                 }
             });
         }
+    }).catch(function(err) {
+        console.log('ERROR: ' + err);        
     });
 }
 

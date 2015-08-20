@@ -1,6 +1,8 @@
 
 module.exports = function() {
 
+    console.log('Init index.js...');
+    
     var Sequelize = require('sequelize'),
         sequelize = new Sequelize('survey', null, null, {
             dialect: 'mysql'
