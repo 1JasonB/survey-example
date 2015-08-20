@@ -1,7 +1,6 @@
 // Survey app: Node, MySQL
 
-var app = require('express')(),
-    crypto = require('crypto');
+var app = require('express')();
 
 var db = require('./models/index')();
 

@@ -1,13 +1,15 @@
 
 module.exports = function(sequelize, DataTypes) {
 
+    var crypto = require('crypto');
+
     // model definition
     var User = sequelize.define("User", {
     //    user_id: Sequelize.INT,
         username: DataTypes.STRING,
         password: DataTypes.STRING,
     }, {
-        instanceMethods: {
+        classMethods: {
             addUser: function(username, password, callback) {
 
                 var shasum = crypto.createHash('sha1');
