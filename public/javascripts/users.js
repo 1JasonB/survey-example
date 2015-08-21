@@ -1,4 +1,4 @@
-angular.module('surveyBuilderUser')
+angular.module('surveyBuilderUser', [])
 .controller('UsersController', [
 '$scope',
 'users',
