@@ -17,6 +17,7 @@
 		426FB35F1B879FA50080D9E7 /* index.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = index.js; path = routes/index.js; sourceTree = "<group>"; };
 		426FB3601B87A4AD0080D9E7 /* Question.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = Question.js; path = models/Question.js; sourceTree = "<group>"; };
 		426FB3611B87A6B80080D9E7 /* users.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = users.ejs; sourceTree = "<group>"; };
+		426FB3621B87AD6E0080D9E7 /* users.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = users.js; path = javascripts/users.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -54,6 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				426FB35A1B865F740080D9E7 /* appClient.js */,
+				426FB3621B87AD6E0080D9E7 /* users.js */,
 			);
 			name = javascripts;
 			sourceTree = "<group>";

@@ -9,7 +9,7 @@ module.exports = function(db) {
     });
 
     router.get('/users', function(req, res, next) {
-        res.render('user', { title: 'Survey Builder - Users' });
+        res.render('users', { title: 'Survey Builder - Users' });
     });
 
     router.get('/getusers', function(req, res, next) {

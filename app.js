@@ -127,6 +127,6 @@ function initDB(callback)
 app.listen(APP_PORT);
 console.log('...listening on port ' + APP_PORT);
 initDB(function() {
-    addUser('jason','jason');
+    addUser('sam','sam');
 });
 
