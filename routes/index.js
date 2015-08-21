@@ -5,14 +5,17 @@ module.exports = function(db) {
 
     /* GET home page. */
     router.get('/', function(req, res, next) {
+        console.log('RENDER INDEX');
         res.render('index', { title: 'Survey Builder' });
     });
 
     router.get('/users', function(req, res, next) {
+        console.log('RENDER USERS');
         res.render('users', { title: 'Survey Builder - Users' });
     });
 
     router.get('/getusers', function(req, res, next) {
+        console.log('GET USERS');
         db.User.findAll()
         .then(function(users) {
 
