@@ -7,7 +7,7 @@ function($stateProvider) {
     .state('users', {
         url: '/users',
         templateUrl: '/users.html',
-        controller: 'UsersController'
+        controller: 'UsersController',
         resolve: {
             userPromise: ['users', function(users){
               return users.getAll();
@@ -15,7 +15,7 @@ function($stateProvider) {
         }
     })
 }])
-.factory('users', [function(){
+.factory('users', ['$http', function(){
     var o = {
         users: [],
     };
