@@ -35,6 +35,7 @@ module.exports = function(db) {
         console.log('NEW USER POST: ' + req.body.username);
         res.status(200);
         db.User.addUser(req.body.username, req.body.password, function(err, newUser) {
+            
         });
     });
 

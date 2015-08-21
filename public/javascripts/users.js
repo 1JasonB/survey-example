@@ -46,6 +46,7 @@ function($scope, users) {
             username : $scope.username,
             password : $scope.password,
         });
+        $scope.push($scope.username);
         $scope.username = '';
         $scope.password = '';
     };

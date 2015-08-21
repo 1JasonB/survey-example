@@ -10,14 +10,26 @@ module.exports = function() {
 
     // load models
     var models = [
-        'User'
+        'User',
+        'Question',
         ],
         db = {};
 
     models.forEach(function(model) {
         var path = __dirname + '/' + model;
-        db[model] = sequelize.import(path);
-        console.log('...importing model, ' + model + ', from ' + path);
+        var dbModels = sequelize.import(path);
+        if (Array.isArray(dbModels))
+        {
+            dbModels.forEach(function(m) {
+                db[m.name] = m;
+                console.log('...importing model, ' + m.name + ', from ' + path);
+            });
+        }
+        else
+        {
+            db[dbModels.name] = dbModels;
+            console.log('...importing model, ' + dbModels.name + ', from ' + path);
+        }
     });
 
     Object.keys(db).forEach(function(modelName) {
