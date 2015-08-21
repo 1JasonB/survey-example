@@ -1,17 +1,20 @@
 angular.module('surveyBuilderUsers', [])
+.factory('users', [function(){
+    var o = {
+        users: [],
+    };
+    o.getAll = function() {
+        return $http.get('/getusers').success(function(data){
+            angular.copy(data, o.users);
+        });
+    };
+    return o;
+}])
 .controller('UsersController', [
 '$scope',
 'users',
 function($scope, $http) {
-    $scope.users = [];
-    $http.get('/getusers').success(function(data, status, headers, config) {
-        $scope.users = data;
-        if (data == "") {
-            $scope.users = [];
-        }
-    }).error(function(data, status, headers, config) {
-        console.log("Oops: could not get any users");
-    });
+    $scope.users = users.users;
 
     $scope.addUser = function() {
         $http.post('/newuser', {
