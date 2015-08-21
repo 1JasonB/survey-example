@@ -17,8 +17,9 @@ function($stateProvider) {
 }])
 .factory('users', ['$http', function($http){
     var o = {
-        users: [],
+        users: ['test'],
     };
+    console.log('Init users factory...');
     o.getAll = function() {
         return $http.get('/getusers').success(function(data){
             angular.copy(data, o.users);
@@ -38,6 +39,7 @@ function($stateProvider) {
 'users',
 function($scope, users) {
     $scope.users = users.users;
+    console.log('Initial users: ' + users.users);
 
     $scope.addUser = function() {
         users.create({
