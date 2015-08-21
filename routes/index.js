@@ -9,8 +9,13 @@ module.exports = function(db) {
     });
 
     router.get('/users', function(req, res, next) {
+        res.render('user', { title: 'Survey Builder - Users' });
+    });
+
+    router.get('/getusers', function(req, res, next) {
         db.User.findAll()
         .then(function(users) {
+
             if (users && users.length)
             {
                 res.send(users);

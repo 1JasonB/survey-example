@@ -56,7 +56,7 @@ function($scope, $stateParams, posts) {
 'users',
 function($scope, $http) {
     $scope.users = [];
-    $http.get('/users').success(function(data, status, headers, config) {
+    $http.get('/getusers').success(function(data, status, headers, config) {
         $scope.users = data;
         if (data == "") {
             $scope.users = [];
