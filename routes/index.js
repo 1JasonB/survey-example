@@ -11,7 +11,14 @@ module.exports = function(db) {
     router.get('/users', function(req, res, next) {
         db.User.find({})
         .then(function(users) {
-            res.send(users);
+            if (users && users.length)
+            {
+                res.send(users);
+            }
+            else
+            {
+                res.send('No users');
+            }
         });
     });
 

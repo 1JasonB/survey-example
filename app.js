@@ -111,12 +111,13 @@ function addUser(name, password)
         });
 }
 
-function initDB()
+function initDB(callback)
 {
     //sync the model with the database
     db.sequelize.sync({ force: true }).then(function() {
     
         console.log("DB Synch'd...");
+        callback();
     }).catch(function(err) {
         console.log('ERROR: ' + err);
     });
