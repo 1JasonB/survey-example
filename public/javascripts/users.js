@@ -24,26 +24,27 @@ function($stateProvider) {
             angular.copy(data, o.users);
         });
     };
+    o.create = function(user) {
+        $http.post('/newuser', user).success(function(data, status, headers, config) {
+            o.users.push(user);
+        }).error(function(data, status, headers, config) {
+            console.log("Oops: " + data);
+        });
+    };
     return o;
 }])
 .controller('UsersController', [
 '$scope',
 'users',
-function($scope, $http) {
+function($scope, users) {
     $scope.users = users.users;
 
     $scope.addUser = function() {
-        $http.post('/newuser', {
+        users.create({
             username : $scope.username,
             password : $scope.password,
-        }).success(function(data, status, headers, config) {
-            $scope.users.push({
-                username : $scope.username,
-            });
-            $scope.username = '';
-            $scope.password = '';
-        }).error(function(data, status, headers, config) {
-            console.log("Ops: " + data);
         });
+        $scope.username = '';
+        $scope.password = '';
     };
 }]);
