@@ -15,7 +15,7 @@ function($stateProvider, $urlRouterProvider) {
         templateUrl: '/posts.html',
         controller: 'PostsController'
     })
-    $urlRouterProvider.otherwise('home');
+    //$urlRouterProvider.otherwise('home');
 }])
 .factory('posts', [function(){
     var o = {
