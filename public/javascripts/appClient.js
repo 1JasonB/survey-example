@@ -15,6 +15,11 @@ function($stateProvider, $urlRouterProvider) {
         templateUrl: '/posts.html',
         controller: 'PostsController'
     });
+    .state('users', {
+        url: '/users',
+        templateUrl: '/users.html',
+        controller: 'UsersController'
+    });
 
   $urlRouterProvider.otherwise('home');
 }])
@@ -44,6 +49,35 @@ function($scope, $stateParams, posts) {
         upvotes: 0
       });
       $scope.body = '';
+    };
+}])
+.controller('UsersController', [
+'$scope',
+'users',
+function($scope, $http) {
+    $scope.users = [];
+    $http.get('/users').success(function(data, status, headers, config) {
+        $scope.users = data;
+        if (data == "") {
+            $scope.users = [];
+        }
+    }).error(function(data, status, headers, config) {
+        console.log("Oops: could not get any users");
+    });
+
+    $scope.addUser = function() {
+        $http.post('/newuser', {
+            username : $scope.username,
+            password : $scope.password,
+        }).success(function(data, status, headers, config) {
+            $scope.users.push({
+                username : $scope.username,
+            });
+            $scope.username = '';
+            $scope.password = '';
+        }).error(function(data, status, headers, config) {
+            console.log("Ops: " + data);
+        });
     };
 }])
 .controller('mainController', [

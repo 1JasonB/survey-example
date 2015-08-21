@@ -9,7 +9,7 @@ module.exports = function(db) {
     });
 
     router.get('/users', function(req, res, next) {
-        db.User.find({})
+        db.User.findAll()
         .then(function(users) {
             if (users && users.length)
             {
@@ -20,6 +20,11 @@ module.exports = function(db) {
                 res.send('No users');
             }
         });
+    });
+
+    router.post('/newuser', function(req, res, next) {
+        console.log('NEW USER POST: ' + req.body.username);
+        res.status(200);
     });
 
     return router;
