@@ -1,4 +1,4 @@
-angular.module('surveyBuilderUsers', [])
+angular.module('surveyBuilderUsers', ['ui.router'])
 .config([
 '$stateProvider',
 function($stateProvider) {
