@@ -13,6 +13,7 @@
 		426FB3571B8633FA0080D9E7 /* User.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = User.js; path = models/User.js; sourceTree = "<group>"; };
 		426FB3591B865F2F0080D9E7 /* index.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = index.ejs; sourceTree = "<group>"; };
 		426FB35A1B865F740080D9E7 /* appClient.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = appClient.js; path = javascripts/appClient.js; sourceTree = "<group>"; };
+		426FB35D1B879ED50080D9E7 /* error.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = error.ejs; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -56,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				426FB3591B865F2F0080D9E7 /* index.ejs */,
+				426FB35D1B879ED50080D9E7 /* error.ejs */,
 			);
 			path = views;
 			sourceTree = "<group>";

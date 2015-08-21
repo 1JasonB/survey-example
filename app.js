@@ -1,12 +1,13 @@
 // Survey app: Node, MySQL
 
-var app = require('express')();
+var express = require('express');
+var app = express();
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+// var routes = require('./routes/index');
+// var users = require('./routes/users');
 
 var db = require('./models/index')();
 
