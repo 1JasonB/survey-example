@@ -21,6 +21,7 @@ module.exports = function(db) {
 
             if (users && users.length)
             {
+                console.log(users.length + ' users');
                 res.send(users);
             }
             else
@@ -33,6 +34,8 @@ module.exports = function(db) {
     router.post('/newuser', function(req, res, next) {
         console.log('NEW USER POST: ' + req.body.username);
         res.status(200);
+        db.User.addUser(req.body.username, req.body.password, function(err, newUser) {
+        });
     });
 
     return router;

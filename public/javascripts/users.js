@@ -39,7 +39,7 @@ function($stateProvider) {
 'users',
 function($scope, users) {
     $scope.users = users.users;
-    console.log('Initial users: ' + users.users);
+    console.log('Initial users: ' + JSON.stringify(users.users));
 
     $scope.addUser = function() {
         users.create({
