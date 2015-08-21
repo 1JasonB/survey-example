@@ -15,7 +15,7 @@ function($stateProvider) {
         }
     })
 }])
-.factory('users', ['$http', function(){
+.factory('users', ['$http', function($http){
     var o = {
         users: [],
     };
