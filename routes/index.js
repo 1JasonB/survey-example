@@ -36,6 +36,14 @@ module.exports = function(db) {
         });
     });
 
+    router.post('/login', function(req, res, next) {
+        console.log('LOGIN: ' + req.body.username);
+        res.status(200);
+        db.User.addUser(req.body.username, req.body.password, function(err, newUser) {
+            
+        });
+    });
+
     router.post('/newuser', function(req, res, next) {
         console.log('NEW USER POST: ' + req.body.username);
         res.status(200);

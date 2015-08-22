@@ -81,16 +81,14 @@ function($scope, posts){
 }])
 .controller('loginController', [
 '$scope',
-function($scope) {
+'$http",
+function($scope, $http) {
     
     console.log('Load adminController');
     $scope.statusMessage = 'Log in to admin console...';
     $scope.loginUser = function() {
         
         console.log('Log in admin...');
-    };
-    /*
-     
         $http.post('/login', {username: $scope.username, password: $scope.password})
         .success(function(data, status, headers, config) {
             if (status == 200)
@@ -109,6 +107,5 @@ function($scope) {
         $scope.username = '';
         $scope.password = '';
     };
-    */
 }]);
 
