@@ -33,9 +33,9 @@ module.exports = function(sequelize, DataTypes) {
                 
                 var user = User.findOne({
                     where:{username: username, password: password}
-                }).success(function(user) {
+                }).then(function(user) {
                     callback(null, user);
-                }).error(function(error) {
+                }).catch(function(error) {
                     callback(error, null);
                 });
             },
