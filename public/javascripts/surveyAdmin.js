@@ -8,15 +8,15 @@ angular.module('surveyBuilderAdmin', [
 function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
-    .state('admin', {
-        url: '/admin',
-        templateUrl: '/admin.html',
-        controller: 'adminController'
+    .state('home', {
+        url: '/home',
+        templateUrl: '/home.html',
+        controller: 'mainController'
     })
  
     // $urlRouterProvider.otherwise('admin');
 }])
-.controller('adminController', [
+.controller('mainController', [
 '$scope',
 function($scope) {
     
