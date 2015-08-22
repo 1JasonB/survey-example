@@ -17,6 +17,11 @@ function($stateProvider, $urlRouterProvider) {
         templateUrl: '/posts.html',
         controller: 'PostsController'
     })
+    .state('login', {
+        url: '/login',
+        templateUrl: '/login.html',
+        controller: 'loginController'
+    })
     //$urlRouterProvider.otherwise('home');
 }])
 .factory('posts', [function(){
@@ -73,4 +78,37 @@ function($scope, posts){
     $scope.incrementUpvotes = function(post) {
         post.upvotes += 1;
     };
+}])
+.controller('loginController', [
+'$scope',
+function($scope) {
+    
+    console.log('Load adminController');
+    $scope.statusMessage = 'Log in to admin console...';
+    /*
+    $scope.loginAdmin = function() {
+        
+        console.log('Log in admin...');
+    };
+     
+        $http.post('/login', {username: $scope.username, password: $scope.password})
+        .success(function(data, status, headers, config) {
+            if (status == 200)
+            {
+                $scope.statusMessage = 'Logged in as admin...';
+                // $state.go('users');
+            }
+            else
+            {
+                $scope.statusMessage = 'Invalid Credentials';
+            }
+        }).error(function(data, status, headers, config) {
+            console.log("Oops: " + data);
+        });
+
+        $scope.username = '';
+        $scope.password = '';
+    };
+    */
 }]);
+
