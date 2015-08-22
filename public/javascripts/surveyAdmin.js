@@ -8,11 +8,12 @@ angular.module('surveyBuilderAdmin', [
 function($stateProvider) {
 
   $stateProvider
-    .state('home', {
+    .state('admin', {
         url: '/admin',
         templateUrl: '/admin.html',
         controller: 'AdminController'
     })
+    /*
     .state('users', {
         url: '/users',
         templateUrl: '/users.html',
@@ -23,8 +24,10 @@ function($stateProvider) {
             }]
         }
     })
-    $urlRouterProvider.otherwise('home');
+    */
+    $urlRouterProvider.otherwise('admin');
 }])
+/*
 .factory('users', ['$http', function($http){
     var o = {
         users: ['test'],
@@ -61,5 +64,5 @@ function($scope, users) {
         $scope.password = '';
     };
 }]);
-
+*/
 

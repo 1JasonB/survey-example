@@ -5,6 +5,7 @@ angular.module('surveyBuilderAdmin.adminController', [
 '$scope',
 function($scope) {
     
+    console.log('Load adminController');
     $scope.loginAdmin = function() {
         
         $http.post('/login', {username: $scope.username, password: $scope.password})

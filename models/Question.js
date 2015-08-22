@@ -80,14 +80,14 @@ module.exports = function(sequelize, DataTypes) {
                         oldQuestions = [];
                         
                     // Build list of previous questions
-                    answers.forEach(function(a)) {
+                    answers.forEach(function(a) {
                         oldQuestions.push(a.QuestionId);
-                    }
+                    });
                     // Get new questions
                     newQuestions = Question.find({
                         where: {id: {$notIn:oldQuestions}}
                     }).success(function(questions) {
-                        callback(null, questions[0]));
+                        callback(null, questions[0]);
                     }).error(function(err) {
                         callback(err, null);
                     });
