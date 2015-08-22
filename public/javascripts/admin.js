@@ -1,8 +1,10 @@
 angular.module('surveyBuilderAdmin.adminController', [
 ])
-.controller('adminController', function($scope, $http) {
+.controller('adminController', function($scope) {
     
     console.log('Load adminController');
+    $scope.statusMessage = 'Log in to admin console...';
+    /*
     $scope.loginAdmin = function() {
         
         $http.post('/login', {username: $scope.username, password: $scope.password})
@@ -23,4 +25,5 @@ angular.module('surveyBuilderAdmin.adminController', [
         $scope.username = '';
         $scope.password = '';
     };
+    */
 });
