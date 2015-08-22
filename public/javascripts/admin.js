@@ -3,11 +3,11 @@ angular.module('surveyBuilderAdmin.controllers', [])
     
     console.log('Load adminController');
     $scope.statusMessage = 'Log in to admin console...';
+    /*
     $scope.loginAdmin = function() {
         
         console.log('Log in admin...');
     };
-    /*
      
         $http.post('/login', {username: $scope.username, password: $scope.password})
         .success(function(data, status, headers, config) {
