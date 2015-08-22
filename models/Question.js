@@ -3,9 +3,27 @@
 module.exports = function(sequelize, DataTypes) {
 
     var Answer = sequelize.define("Answer", {
-        user: DataTypes.STRING,
+        UserId: DataTypes.INTEGER,
     }, {
         classMethods: {
+            addAnswer: function(userID, choiceId, questionId, callback) {
+                
+                Answer.create({
+                    UserId: userId,
+                    ChoiceId: choiceId,
+                    QuestionId: questionId,
+                });
+            },
+
+            answersForUser: function(userId, callback) {
+                Answer.find({
+                    where: {'UserId': userId}
+                }).success(function(answers) {
+                    callback(null, answers);
+                }).error(function(err) {
+                    callback(err, null);
+                });
+            }
         }
     });
 
@@ -24,6 +42,26 @@ module.exports = function(sequelize, DataTypes) {
     //    user_id: Sequelize.INT,
         text: DataTypes.STRING,
     }, {
+        instanceMethods: {
+            addChoices: function(choices, callback) {
+                var i;
+                for (i = 0; i < choices.length; i++)
+                {
+                    Choice.create({text: choices[i],
+                                   QuestionId: this.id  });
+                }
+            },
+            
+            getChoices: function(callback) {
+                Choice.find({
+                    where: {QuestionId: this.id},
+                }).success(function(choices) {
+                    callback(null, choices);
+                }).error(function(err) {
+                    callback(err, null);
+                });
+            },
+        },
         classMethods: {
             addQuestion: function(questionText, choices, callback) {
                 
@@ -34,9 +72,31 @@ module.exports = function(sequelize, DataTypes) {
                     callback(error, null);
                 });
             },
+            
+            getNewQuestionForUser: function(userId, callback) {
+                // Get users previous answers
+                var answers = Answer.answersForUser(userId, function(err, answers) {
+                    var newQuestions = [],
+                        oldQuestions = [];
+                        
+                    // Build list of previous questions
+                    answers.forEach(function(a)) {
+                        oldQuestions.push(a.QuestionId);
+                    }
+                    // Get new questions
+                    newQuestions = Question.find({
+                        where: {id: {$notIn:oldQuestions}}
+                    }).success(function(questions) {
+                        callback(null, questions[0]));
+                    }).error(function(err) {
+                        callback(err, null);
+                    });
+                });
+            },
 
             associate: function(models) {
                 Question.hasMany(models.Choice, { as : 'choices' });
+                Question.hasMany(models.Answer, { as : 'answers' });
             },
         }
     });

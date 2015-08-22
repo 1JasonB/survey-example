@@ -9,6 +9,11 @@ module.exports = function(db) {
         res.render('index', { title: 'Survey Builder' });
     });
 
+    router.get('/admin', function(req, res, next) {
+        console.log('RENDER ADMIN');
+        res.render('admin', { title: 'Survey Builder Admin' });
+    });
+
     router.get('/users', function(req, res, next) {
         console.log('RENDER USERS');
         res.render('users', { title: 'Survey Builder - Users' });

@@ -1,4 +1,7 @@
-angular.module('surveyBuilderUsers', ['ui.router'])
+angular.module('surveyBuilderAdmin', [
+    'ui-router',
+    'surveyBuilderAdmin.adminController',
+])
 .config([
 '$stateProvider',
 '$urlRouterProvider',
@@ -58,3 +61,5 @@ function($scope, users) {
         $scope.password = '';
     };
 }]);
+
+
