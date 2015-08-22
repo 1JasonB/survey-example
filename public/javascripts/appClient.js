@@ -81,7 +81,7 @@ function($scope, posts){
 }])
 .controller('loginController', [
 '$scope',
-'$http",
+'$http',
 function($scope, $http) {
     
     console.log('Load adminController');

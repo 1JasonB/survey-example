@@ -38,10 +38,19 @@ module.exports = function(db) {
 
     router.post('/login', function(req, res, next) {
         console.log('LOGIN: ' + req.body.username);
-        res.status(200);
-        db.User.addUser(req.body.username, req.body.password, function(err, newUser) {
-            
-        });
+        db.User.loginUser(req.body.username, req.body.password), function(err, user) {
+            if (user)
+            {
+                console.log(req.body.username + ' is now logged in.');
+                req.session.loggedIn = true;
+                req.session.username = user.username;
+                res.status(200);
+            }
+            else
+            {
+                res.status(404);
+            }
+        };
     });
 
     router.post('/newuser', function(req, res, next) {

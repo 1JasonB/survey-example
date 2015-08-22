@@ -24,6 +24,21 @@ module.exports = function(sequelize, DataTypes) {
                     callback(error, null);
                 });
             },
+            loginUser: function(username, password, callback) {
+
+                var shasum = crypto.createHash('sha1');
+
+                shasum.update(password);
+                password = shasum.digest('hex');
+                
+                var user = User.findOne({
+                    where:{username: username}, {password: password}
+                }).success(function(user) {
+                    callback(null, user);
+                }).error(function(error) {
+                    callback(error, null);
+                });
+            },
         }
     });
     
