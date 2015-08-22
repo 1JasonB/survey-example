@@ -5,7 +5,7 @@ angular.module('surveyBuilderAdmin', [
 .config([
 '$stateProvider',
 '$urlRouterProvider',
-function($stateProvider) {
+function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
     .state('admin', {

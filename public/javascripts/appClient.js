@@ -1,4 +1,6 @@
-angular.module('surveyBuilder', ['ui.router'])
+angular.module('surveyBuilder', [
+    'ui.router'
+])
 .config([
 '$stateProvider',
 '$urlRouterProvider',
