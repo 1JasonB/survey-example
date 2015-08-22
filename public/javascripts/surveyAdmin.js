@@ -2,7 +2,7 @@ angular.module('surveyBuilderAdmin', [
     'surveyBuilderAdmin.controllers',
     // 'ui-router',
     'ngRoute',
-]);
+]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.
 	when("/admin", {templateUrl: "admin.html", controller: "adminController"}).
