@@ -51,7 +51,7 @@ module.exports = function(db) {
                 console.log(req.body.username + ' not found');
                 res.status(404);
             }
-        };
+        });
     });
 
     router.post('/newuser', function(req, res, next) {
