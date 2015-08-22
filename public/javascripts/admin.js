@@ -1,4 +1,4 @@
-angular.module('surveyBuilderAdmin.adminController', [
+angular.module('surveyBuilderAdmin.AdminController', [
 ])
 .controller('AdminController', function($scope) {
     

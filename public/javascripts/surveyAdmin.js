@@ -1,6 +1,6 @@
 angular.module('surveyBuilderAdmin', [
     'ui-router',
-    'surveyBuilderAdmin.adminController',
+    'surveyBuilderAdmin.AdminController',
 ])
 .config([
 '$stateProvider',
