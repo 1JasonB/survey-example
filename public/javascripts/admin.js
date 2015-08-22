@@ -1,9 +1,6 @@
 angular.module('surveyBuilderAdmin.adminController', [
-    'ui-router',
 ])
-.controller('adminController', [
-'$scope',
-function($scope) {
+.controller('adminController', function($scope) {
     
     console.log('Load adminController');
     $scope.loginAdmin = function() {
@@ -13,7 +10,7 @@ function($scope) {
             if (status == 200)
             {
                 $scope.statusMessage = 'Logged in as admin...';
-                $state.go('users');
+                // $state.go('users');
             }
             else
             {
@@ -26,4 +23,4 @@ function($scope) {
         $scope.username = '';
         $scope.password = '';
     };
-}]);
+});
