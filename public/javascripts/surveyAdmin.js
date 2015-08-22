@@ -1,6 +1,6 @@
 angular.module('surveyBuilderAdmin', [
-    'ui-router',
     'surveyBuilderAdmin.AdminController',
+    'ui-router',
 ])
 .config([
 '$stateProvider',
@@ -26,7 +26,7 @@ function($stateProvider, $urlRouterProvider) {
     })
     */
     $urlRouterProvider.otherwise('admin');
-}])
+}]);
 /*
 .factory('users', ['$http', function($http){
     var o = {
