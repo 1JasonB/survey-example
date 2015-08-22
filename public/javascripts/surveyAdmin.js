@@ -5,7 +5,7 @@ angular.module('surveyBuilderAdmin', [
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.
-	when("/admin", {templateUrl: "admin.html", controller: "adminController"}).
+	when("/admin", {templateUrl: "/admin.html", controller: "adminController"}).
 	otherwise({redirectTo: '/admin'});
 }]);
 /*
