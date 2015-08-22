@@ -1,6 +1,7 @@
 // Survey app: Node, MySQL
 
 var express = require('express');
+var session = require('express-session');
 var app = express();
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -15,6 +16,7 @@ var routes = require('./routes/index')(db);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(session({secret: 'survey-builder'}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
