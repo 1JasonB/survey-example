@@ -48,6 +48,7 @@ module.exports = function(db) {
             }
             else
             {
+                console.log(req.body.username + ' not found');
                 res.status(404);
             }
         };

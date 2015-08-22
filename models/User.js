@@ -32,7 +32,7 @@ module.exports = function(sequelize, DataTypes) {
                 password = shasum.digest('hex');
                 
                 var user = User.findOne({
-                    where:{username: username}, {password: password}
+                    where:{username: username, password: password}
                 }).success(function(user) {
                     callback(null, user);
                 }).error(function(error) {
