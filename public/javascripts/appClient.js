@@ -85,11 +85,11 @@ function($scope) {
     
     console.log('Load adminController');
     $scope.statusMessage = 'Log in to admin console...';
-    /*
-    $scope.loginAdmin = function() {
+    $scope.loginUser = function() {
         
         console.log('Log in admin...');
     };
+    /*
      
         $http.post('/login', {username: $scope.username, password: $scope.password})
         .success(function(data, status, headers, config) {
