@@ -14,9 +14,11 @@ function($stateProvider, $urlRouterProvider) {
         controller: 'adminController'
     })
  
-    $urlRouterProvider.otherwise('admin');
+    // $urlRouterProvider.otherwise('admin');
 }])
-.controller('adminController', function($scope) {
+.controller('adminController', [
+'$scope',
+function($scope) {
     
     console.log('Load adminController');
     $scope.statusMessage = 'Log in to admin console...';
@@ -45,7 +47,7 @@ function($stateProvider, $urlRouterProvider) {
         $scope.password = '';
     };
     */
-});
+}]);
 
 /*
 .config([
