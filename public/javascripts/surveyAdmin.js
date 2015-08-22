@@ -1,12 +1,20 @@
 angular.module('surveyBuilderAdmin', [
-    //'surveyBuilderAdmin.controllers',
-    // 'ui-router',
-    'ngRoute',
+    // surveyBuilderAdmin.controllers',
+    'ui-router',
 ]).
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider.
-	when("/admin", {templateUrl: "/admin.html", controller: "adminController"}).
-	otherwise({redirectTo: '/admin'});
+.config([
+'$stateProvider',
+'$urlRouterProvider',
+function($stateProvider, $urlRouterProvider) {
+
+  $stateProvider
+    .state('admin', {
+        url: '/admin',
+        templateUrl: '/admin.html',
+        controller: 'adminController'
+    })
+ 
+    $urlRouterProvider.otherwise('admin');
 }])
 .controller('adminController', function($scope) {
     
