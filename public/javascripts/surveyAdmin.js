@@ -1,17 +1,18 @@
 angular.module('surveyBuilderAdmin', [
-    'surveyBuilderAdmin.AdminController',
+    'surveyBuilderAdmin.controllers',
     'ui-router',
-])
+]);
+/*
 .config([
 '$stateProvider',
 '$urlRouterProvider',
 function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
-    .state('admin', {
+    .state('home', {
         url: '/admin',
         templateUrl: '/admin.html',
-        controller: 'AdminController'
+        controller: 'adminController'
     })
     /*
     .state('users', {
@@ -24,9 +25,10 @@ function($stateProvider, $urlRouterProvider) {
             }]
         }
     })
-    */
-    $urlRouterProvider.otherwise('admin');
+ 
+    $urlRouterProvider.otherwise('home');
 }]);
+*/
 /*
 .factory('users', ['$http', function($http){
     var o = {

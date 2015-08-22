@@ -1,6 +1,5 @@
-angular.module('surveyBuilderAdmin.AdminController', [
-])
-.controller('AdminController', function($scope) {
+angular.module('surveyBuilderAdmin.controllers', [])
+.controller('adminController', function($scope) {
     
     console.log('Load adminController');
     $scope.statusMessage = 'Log in to admin console...';
