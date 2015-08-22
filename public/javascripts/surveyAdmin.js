@@ -1,6 +1,6 @@
 angular.module('surveyBuilderAdmin', [
-    'surveyBuilderAdmin.controllers',
-    'ui-router',
+    // 'surveyBuilderAdmin.controllers',
+    // 'ui-router',
 ]);
 /*
 .config([
