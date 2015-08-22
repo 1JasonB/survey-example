@@ -38,7 +38,7 @@ module.exports = function(db) {
 
     router.post('/login', function(req, res, next) {
         console.log('LOGIN: ' + req.body.username);
-        db.User.loginUser(req.body.username, req.body.password), function(err, user) {
+        db.User.loginUser(req.body.username, req.body.password, function(err, user) {
             if (user)
             {
                 console.log(req.body.username + ' is now logged in.');
