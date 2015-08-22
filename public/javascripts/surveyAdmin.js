@@ -1,5 +1,5 @@
 angular.module('surveyBuilderAdmin', [
-    // 'surveyBuilderAdmin.controllers',
+    'surveyBuilderAdmin.controllers',
     // 'ui-router',
 ]);
 /*
