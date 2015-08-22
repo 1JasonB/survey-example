@@ -1,7 +1,7 @@
 angular.module('surveyBuilderAdmin', [
     // surveyBuilderAdmin.controllers',
     'ui-router',
-]).
+])
 .config([
 '$stateProvider',
 '$urlRouterProvider',
