@@ -102,6 +102,10 @@ function($scope, $http) {
         console.log('Log in admin...');
         $http.post('/login', {username: $scope.username, password: $scope.password})
         .success(function(data, status, headers, config) {
+            console.log('data: ' + JSON.stringify(data));
+            console.log('status: ' + JSON.stringify(status));
+            console.log('headers: ' + JSON.stringify(headers));
+            console.log('config: ' + JSON.stringify(config));
             if (status == 200)
             {
                 $scope.statusMessage = 'Logged in as ' + $scope.username + '...';
