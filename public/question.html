@@ -1,0 +1,13 @@
+<div class="page-header">
+    <h1>Survey Builder - Question</h1>
+</div>
+
+<h2>{{question}}</h2
+<div ng-repeat="choice in choices">
+
+    <span style="font-size:20px; margin-left:10px;">
+        {{choice.text}}
+    </span>
+</div>
+
+<button type="submit" ng-submit="submitAnswer()" class="btn btn-primary">Submit Answer</button>

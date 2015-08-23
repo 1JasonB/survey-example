@@ -1,5 +1,6 @@
 angular.module('surveyBuilder', [
     'surveyBuilder.adminControllers',
+    'surveyBuilder.surveyControllers',
     'ui.router'
 ])
 .config([
@@ -32,6 +33,11 @@ function($stateProvider, $urlRouterProvider) {
         url: '/login',
         templateUrl: '/login.html',
         controller: 'loginController'
+    })
+    .state('question', {
+        url: '/question',
+        templateUrl: '/question.html',
+        controller: 'SurveyController'
     })
     //$urlRouterProvider.otherwise('home');
 }])
@@ -112,6 +118,11 @@ function($scope, $http, $state) {
                 {
                     console.log('Go users...');
                     $state.go('users');
+                }
+                else
+                {
+                    console.log('Go question...');
+                    $state.go('question');
                 }
             }
         }).error(function(data, status, headers, config) {
