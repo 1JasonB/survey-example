@@ -130,5 +130,6 @@ app.listen(APP_PORT);
 console.log('...listening on port ' + APP_PORT);
 initDB(function() {
     addUser('sam','sam');
+    addUser('admin','admin');
 });
 
