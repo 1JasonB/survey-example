@@ -1,4 +1,5 @@
 angular.module('surveyBuilder', [
+    'surveyBuilder.adminControllers',
     'ui.router'
 ])
 .config([
@@ -11,6 +12,16 @@ function($stateProvider, $urlRouterProvider) {
         url: '/home',
         templateUrl: '/home.html',
         controller: 'mainController'
+    })
+    .state('users', {
+        url: '/users',
+        templateUrl: '/users.html',
+        controller: 'UsersController',
+        resolve: {
+            userPromise: ['users', function(users){
+              return users.getAll();
+            }]
+        }
     })
     .state('posts', {
         url: '/posts/{id}',
@@ -93,8 +104,11 @@ function($scope, $http) {
         .success(function(data, status, headers, config) {
             if (status == 200)
             {
-                $scope.statusMessage = 'Logged in as admin...';
-                // $state.go('users');
+                $scope.statusMessage = 'Logged in as ' + $scope.username + '...';
+                if ($scope.username === 'admin')
+                {
+                    $state.go('users');
+                }
             }
             else
             {

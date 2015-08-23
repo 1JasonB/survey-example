@@ -22,6 +22,8 @@
 		426FB3641B87C5340080D9E7 /* question.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = question.ejs; sourceTree = "<group>"; };
 		426FB3651B87E46C0080D9E7 /* admin.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = admin.js; path = javascripts/admin.js; sourceTree = "<group>"; };
 		426FB3661B87E5F60080D9E7 /* login.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = login.html; sourceTree = "<group>"; };
+		426FB3671B8A46050080D9E7 /* users.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = users.html; sourceTree = "<group>"; };
+		426FB3681B8A477A0080D9E7 /* adminControllers.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = adminControllers.js; path = javascripts/adminControllers.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -51,6 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				426FB3661B87E5F60080D9E7 /* login.html */,
+				426FB3671B8A46050080D9E7 /* users.html */,
 				426FB35B1B867EB20080D9E7 /* javascripts */,
 			);
 			path = public;
@@ -60,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				426FB35A1B865F740080D9E7 /* appClient.js */,
+				426FB3681B8A477A0080D9E7 /* adminControllers.js */,
 				426FB3621B87AD6E0080D9E7 /* users.js */,
 				426FB3631B87C2520080D9E7 /* surveyAdmin.js */,
 				426FB3651B87E46C0080D9E7 /* admin.js */,
