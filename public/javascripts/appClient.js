@@ -99,23 +99,23 @@ function($scope, $http) {
     $scope.statusMessage = 'Log in to admin console...';
     $scope.loginUser = function() {
         
-        console.log('Log in admin...');
+        console.log('Log in...');
+        var username = $scope.username;
         $http.post('/login', {username: $scope.username, password: $scope.password})
         .success(function(data, status, headers, config) {
-            console.log('data: ' + JSON.stringify(data));
             console.log('status: ' + JSON.stringify(status));
-            console.log('headers: ' + JSON.stringify(headers));
-            console.log('config: ' + JSON.stringify(config));
-            if (status == 200)
+            if (status === 200)
             {
-                $scope.statusMessage = 'Logged in as ' + $scope.username + '...';
-                if ($scope.username === 'admin')
+                $scope.statusMessage = 'Logged in as ' + username + '...';
+                if (username === 'admin')
                 {
+                    console.log('Go users...');
                     $state.go('users');
                 }
             }
             else
             {
+                console.log('Invalid Credentials');
                 $scope.statusMessage = 'Invalid Credentials';
             }
         }).error(function(data, status, headers, config) {
