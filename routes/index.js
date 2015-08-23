@@ -44,12 +44,12 @@ module.exports = function(db) {
                 console.log(req.body.username + ' is now logged in.');
                 req.session.loggedIn = true;
                 req.session.username = user.username;
-                res.status(200);
+                res.status(200).send();
             }
             else
             {
                 console.log(req.body.username + ' not found');
-                res.status(404);
+                res.status(404).send();
             }
         });
     });
