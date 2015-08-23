@@ -11,3 +11,27 @@
 </div>
 
 <button type="submit" ng-submit="submitAnswer()" class="btn btn-primary">Submit Answer</button>
+
+
+
+
+
+
+<form role="form" ng-submit="submitAnswer()">
+    <div ng-repeat="choice in choices" class="radio">
+        <label>
+            <input type="radio" name="choice" ng-model="poll.userVote" value="{{choice._id}}">
+            {{choice.text}}
+        </label>
+    </div>
+    <p><hr></p>
+    <div class="row">
+        <div class="col-xs-6">
+            <a href="#/polls" class="btn btn-default" role="button">
+            <span class="glyphicon glyphicon-arrow-left"></span> Back to Poll
+        </div>
+        <div class="col-xs-6">
+            <button class="btn btn-primary pull-right" type="submit">Vote &raquo;</button>
+        </div>
+    </div>
+</form>

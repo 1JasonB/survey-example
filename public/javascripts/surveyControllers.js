@@ -5,20 +5,11 @@ angular.module('surveyBuilder.surveyControllers', [])
         choices: [{text: 'Answer 1'}, {text: 'Answer 2'}, {text: 'Answer 3'}, {text: 'Answer 4'}],
     };
     console.log('Init question factory...');
-    /*
-    o.getAll = function() {
-        return $http.get('/getusers').success(function(data){
-            angular.copy(data, o.users);
+    o.getQuestion = function() {
+        return $http.get('/getquestion').success(function(data){
+            angular.copy(data, o.question);
         });
-    };
-    o.create = function(user) {
-        $http.post('/newuser', user).success(function(data, status, headers, config) {
-            o.users.push(user);
-        }).error(function(data, status, headers, config) {
-            console.log("Oops: " + data);
-        });
-    };
-    */
+    };    
     return o;
 }])
 .controller('SurveyController', [

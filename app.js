@@ -116,7 +116,7 @@ function addUser(name, password)
 function initDB(callback)
 {
     //sync the model with the database
-    db.sequelize.sync({ force: true }).then(function() {
+    db.sequelize.sync({ force: false }).then(function() {
     
         console.log("DB Synch'd...");
         callback();
@@ -129,7 +129,7 @@ function initDB(callback)
 app.listen(APP_PORT);
 console.log('...listening on port ' + APP_PORT);
 initDB(function() {
-    addUser('sam','sam');
-    addUser('admin','admin');
+    // addUser('sam','sam');
+    // addUser('admin','admin');
 });
 
