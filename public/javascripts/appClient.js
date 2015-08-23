@@ -93,7 +93,8 @@ function($scope, posts){
 .controller('loginController', [
 '$scope',
 '$http',
-function($scope, $http) {
+'$state',
+function($scope, $http, $state) {
     
     console.log('Load adminController');
     $scope.statusMessage = 'Log in to admin console...';
@@ -113,13 +114,9 @@ function($scope, $http) {
                     $state.go('users');
                 }
             }
-            else
-            {
-                console.log('Invalid Credentials');
-                $scope.statusMessage = 'Invalid Credentials';
-            }
         }).error(function(data, status, headers, config) {
             console.log("Oops: " + data);
+            $scope.statusMessage = 'Invalid Credentials';
         });
 
         $scope.username = '';
