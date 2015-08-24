@@ -8,7 +8,7 @@
 <form role="form" ng-submit="submitAnswer()" style="margin-top:30px;">
     <div ng-repeat="choice in choices" class="radio">
         <label>
-            <input type="radio" name="choice" ng-model="choiceId" value="{{choice.id}}">
+            <input type="radio" name="choice" ng-model="choice.id" value="choice.id">
             {{choice.text}}
         </label>
     </div>
