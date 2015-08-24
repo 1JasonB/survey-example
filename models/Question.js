@@ -55,12 +55,21 @@ module.exports = function(sequelize, DataTypes) {
         instanceMethods: {
             addChoices: function(choices, callback) {
                 var i;
-                for (i = 0; i < choices.length; i++)
+                if (choices)
                 {
-                    Choice.create({text: choices[i],
-                                   QuestionId: this.id  });
+                    console.log('Add Choices to question: ' + choices);
+                    for (i = 0; i < choices.length; i++)
+                    {
+                        Choice.create({text: choices[i],
+                                       QuestionId: this.id  });
+                    }
+                    callback(0, this);
                 }
-                callback(0, this);
+                else
+                {
+                    console.log('ERROR: No choices to add.');
+                    callback(0, this);
+                }
             },
             
             getChoices: function(callback) {
