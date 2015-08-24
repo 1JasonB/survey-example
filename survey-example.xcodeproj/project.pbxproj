@@ -16,9 +16,6 @@
 		426FB35D1B879ED50080D9E7 /* error.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = error.ejs; sourceTree = "<group>"; };
 		426FB35F1B879FA50080D9E7 /* index.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = index.js; path = routes/index.js; sourceTree = "<group>"; };
 		426FB3601B87A4AD0080D9E7 /* Question.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = Question.js; path = models/Question.js; sourceTree = "<group>"; };
-		426FB3611B87A6B80080D9E7 /* users.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = users.ejs; sourceTree = "<group>"; };
-		426FB3621B87AD6E0080D9E7 /* users.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = users.js; path = javascripts/users.js; sourceTree = "<group>"; };
-		426FB3641B87C5340080D9E7 /* question.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = question.ejs; sourceTree = "<group>"; };
 		426FB3661B87E5F60080D9E7 /* login.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = login.html; sourceTree = "<group>"; };
 		426FB3671B8A46050080D9E7 /* users.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = users.html; sourceTree = "<group>"; };
 		426FB3681B8A477A0080D9E7 /* adminControllers.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = adminControllers.js; path = javascripts/adminControllers.js; sourceTree = "<group>"; };
@@ -72,7 +69,6 @@
 				426FB35A1B865F740080D9E7 /* appClient.js */,
 				426FB3681B8A477A0080D9E7 /* adminControllers.js */,
 				426FB36A1B8A7ABA0080D9E7 /* surveyControllers.js */,
-				426FB3621B87AD6E0080D9E7 /* users.js */,
 			);
 			name = javascripts;
 			sourceTree = "<group>";
@@ -81,8 +77,6 @@
 			isa = PBXGroup;
 			children = (
 				426FB3591B865F2F0080D9E7 /* index.ejs */,
-				426FB3611B87A6B80080D9E7 /* users.ejs */,
-				426FB3641B87C5340080D9E7 /* question.ejs */,
 				426FB35D1B879ED50080D9E7 /* error.ejs */,
 			);
 			path = views;

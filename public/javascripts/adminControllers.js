@@ -105,5 +105,10 @@ function($scope, questionList) {
             $scope.questionText = 'Invalid question';
         }
     };
+}])
+.controller('ResultsController', [
+'$scope',
+function($scope) {
+
 }]);
 
