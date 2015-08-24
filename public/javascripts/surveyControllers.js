@@ -39,7 +39,7 @@ function($scope, $http, question) {
     $scope.submitAnswer = function() {
         console.log('Answered question: ' + $scope.choiceId);
         answer = {
-            ChoiceId: $scope.choiceId;
+            ChoiceId: $scope.choiceId,
             QuestionId: question.question.id,
         };
         $http.post('/answer', answer).success(function(data, status, headers, config) {
