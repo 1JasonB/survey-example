@@ -99,7 +99,7 @@ module.exports = function(sequelize, DataTypes) {
                 // Get users previous answers
                 var answers = Answer.answersForUser(userId, function(err, answers) {
                     var newQuestions = [],
-                        oldQuestions = [];
+                        oldQuestions = [0];
                         
                     if (answers && answers.length)
                     {
