@@ -39,6 +39,11 @@ function($stateProvider, $urlRouterProvider) {
         templateUrl: '/question.html',
         controller: 'SurveyController'
     })
+    .state('newquestion', {
+        url: '/newquestion',
+        templateUrl: '/newquestion.html',
+        controller: 'NewQuestionController'
+    })
     //$urlRouterProvider.otherwise('home');
 }])
 .factory('posts', [function(){
