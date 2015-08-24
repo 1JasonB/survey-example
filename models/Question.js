@@ -60,7 +60,7 @@ module.exports = function(sequelize, DataTypes) {
                     console.log('Add Choices to question: ' + choices);
                     for (i = 0; i < choices.length; i++)
                     {
-                        Choice.create({text: choices[i],
+                        Choice.create({text: choices[i].text,
                                        QuestionId: this.id  });
                     }
                     console.log('Added Choices...');
@@ -88,6 +88,7 @@ module.exports = function(sequelize, DataTypes) {
                 
                 var question = Question.build({text: questionText});
                 question.save().then(function(newQuestion) {
+                    console.log('Adding ' + choices.length + ' to question: ' + newQuestion.text);
                     newQuestion.addChoices(choices, callback);
                 }).catch(function(error) {
                     console.log('ERROR: addQuestion - ' + error);
