@@ -68,20 +68,24 @@ function($scope, questionList) {
 
     $scope.addQuestion = function() {
         var validChoices = [];
-        if ($scope.answerText1 !== '')
+        if ($scope.answerText1 && ($scope.answerText1 !== ''))
         {
+            console.log('Adding choice: ' + $scope.answerText1);
             validChoices.push({text: $scope.answerText1});
         }
-        if ($scope.answerText2 !== '')
+        if ($scope.answerText2 && ($scope.answerText2 !== ''))
         {
+            console.log('Adding choice: ' + $scope.answerText2);
             validChoices.push({text: $scope.answerText2});
         }
-        if ($scope.answerText3 !== '')
+        if ($scope.answerText3 && ($scope.answerText3 !== ''))
         {
+            console.log('Adding choice: ' + $scope.answerText3);
             validChoices.push({text: $scope.answerText3});
         }
-        if ($scope.answerText4 !== '')
+        if ($scope.answerText4 && ($scope.answerText4 !== ''))
         {
+            console.log('Adding choice: ' + $scope.answerText4);
             validChoices.push({text: $scope.answerText4});
         }
         if (($scope.questionText !== '') && (validChoices.length > 1))
