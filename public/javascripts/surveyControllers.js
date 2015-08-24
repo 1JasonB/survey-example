@@ -10,7 +10,7 @@ angular.module('surveyBuilder.surveyControllers', [])
     o.getQuestion = function() {
         return $http.get('/nextquestion').success(function(data){
             console.log('Received data: ' + JSON.stringify(data));
-            if (data.text)
+            if (data)
             {
                 angular.copy(data, o.question);
             }
@@ -31,6 +31,7 @@ angular.module('surveyBuilder.surveyControllers', [])
 '$scope',
 'question',
 function($scope, question) {
+    console.log('Initial question: ' + JSON.stringify(question.question));
     $scope.question = question.question.text;
     $scope.choices = question.question.choices;
 
