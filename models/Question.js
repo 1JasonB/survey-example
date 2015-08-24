@@ -53,25 +53,6 @@ module.exports = function(sequelize, DataTypes) {
         text: DataTypes.STRING,
     }, {
         instanceMethods: {
-            addChoices: function(choices, callback) {
-                var i;
-                if (choices)
-                {
-                    console.log('Add Choices to question: ' + choices);
-                    for (i = 0; i < choices.length; i++)
-                    {
-                        Choice.create({text: choices[i].text,
-                                       QuestionId: this.id  });
-                    }
-                    console.log('Added Choices...');
-                    callback(0, this);
-                }
-                else
-                {
-                    console.log('ERROR: No choices to add.');
-                    callback(0, this);
-                }
-            },
             
             getChoices: function(callback) {
                 Choice.find({
@@ -84,12 +65,32 @@ module.exports = function(sequelize, DataTypes) {
             },
         },
         classMethods: {
+            addChoices: function(question, choices, callback) {
+                var i;
+                if (choices)
+                {
+                    console.log('Add Choices to question: ' + choices);
+                    for (i = 0; i < choices.length; i++)
+                    {
+                        Choice.create({text: choices[i].text,
+                                       QuestionId: question.id  });
+                    }
+                    console.log('Added Choices...');
+                    callback(0, question);
+                }
+                else
+                {
+                    console.log('ERROR: No choices to add.');
+                    callback(0, question);
+                }
+            },
+
             addQuestion: function(questionText, choices, callback) {
                 
                 var question = Question.build({text: questionText});
                 question.save().then(function(newQuestion) {
                     console.log('Adding ' + choices.length + ' to question: ' + newQuestion.text);
-                    newQuestion.addChoices(choices, callback);
+                    Question.addChoices(newQuestion, choices, callback);
                 }).catch(function(error) {
                     console.log('ERROR: addQuestion - ' + error);
                     callback(error, null);
