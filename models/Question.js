@@ -20,7 +20,14 @@ module.exports = function(sequelize, DataTypes) {
                 Answer.find({
                     where: {'UserId': userId}
                 }).then(function(answers) {
-                    console.log('...found ' + answers.length + ' answers');
+                    if (answers)
+                    {
+                        console.log('...found ' + answers.length + ' answers');
+                    }
+                    else
+                    {
+                        console.log('...found 0 answers');
+                    }
                     callback(null, answers);
                 }).catch(function(err) {
                     console.log('ERROR: findAnswers - ' + err);
