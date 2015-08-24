@@ -2,8 +2,13 @@
     <h1>Survey Builder - Question</h1>
 </div>
 
+<span ng-hide='submittedAnswer'>
 <h2>{{question}}</h2>
+</span>
 
+<span ng-show='submittedAnswer'>
+<h2>Thank you!</h2>
+</span>
 
 <form role="form" ng-submit="submitAnswer()" style="margin-top:30px;">
     <div ng-repeat="choice in choices" class="radio">

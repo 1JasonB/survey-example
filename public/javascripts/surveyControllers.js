@@ -35,6 +35,7 @@ function($scope, $http, question) {
     console.log('Initial question: ' + JSON.stringify(question.question));
     $scope.question = question.question.text;
     $scope.choices = question.question.choices;
+    $scope.submittedAnswer = false;
 
     $scope.submitAnswer = function() {
         console.log('Answered question: ' + $scope.answer);
@@ -42,6 +43,7 @@ function($scope, $http, question) {
             ChoiceId: $scope.answer,
             QuestionId: question.question.QuestionId,
         };
+        $scope.submittedAnswer = true;
         $http.post('/answer', answer).success(function(data, status, headers, config) {
             
         }).error(function(data, status, headers, config) {

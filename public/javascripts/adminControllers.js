@@ -67,20 +67,39 @@ function($scope, questionList) {
     console.log('Initial question: ' + JSON.stringify(questionList.questionList));
 
     $scope.addQuestion = function() {
-        questionList.create({
-            text : $scope.questionText,
-            choices : [
-                {text: $scope.answerText1},
-                {text: $scope.answerText2},
-                {text: $scope.answerText3},
-                {text: $scope.answerText4},
-            ]
-         });
-        $scope.questionText = '';
-        $scope.answerText1 = '';
-        $scope.answerText2 = '';
-        $scope.answerText3 = '';
-        $scope.answerText4 = '';
+        var validChoices = [];
+        if ($scope.answerText1 !== '')
+        {
+            validChoices.push({text: $scope.answerText1});
+        }
+        if ($scope.answerText2 !== '')
+        {
+            validChoices.push({text: $scope.answerText2});
+        }
+        if ($scope.answerText3 !== '')
+        {
+            validChoices.push({text: $scope.answerText3});
+        }
+        if ($scope.answerText4 !== '')
+        {
+            validChoices.push({text: $scope.answerText4});
+        }
+        if (($scope.questionText !== '') && (validChoices.length > 1))
+        {
+            questionList.create({
+                text : $scope.questionText,
+                choices : validChoices,
+             });
+            $scope.questionText = '';
+            $scope.answerText1 = '';
+            $scope.answerText2 = '';
+            $scope.answerText3 = '';
+            $scope.answerText4 = '';
+        }
+        else
+        {
+            $scope.questionText = 'Invalid question';
+        }
     };
 }]);
 
