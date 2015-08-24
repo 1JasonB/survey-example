@@ -114,7 +114,7 @@ module.exports = function(sequelize, DataTypes) {
                     }).then(function(questions) {
                         if (questions && questions.length)
                         {
-                            console.log('...found ' + questions.length + ' for user');
+                            console.log('...found ' + questions.length + ' questions for user');
                             callback(null, questions[0]);
                         }
                         else

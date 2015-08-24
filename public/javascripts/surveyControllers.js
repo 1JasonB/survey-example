@@ -7,6 +7,7 @@ angular.module('surveyBuilder.surveyControllers', [])
     console.log('Init question factory...');
     o.getQuestion = function() {
         return $http.get('/nextquestion').success(function(data){
+            console.log('Received data: ' + JSON.stringify(data));
             if (data.text)
             {
                 angular.copy(data, o.question);
