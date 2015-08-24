@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
                     console.log('...found ' + answers.length + ' answers');
                     callback(null, answers);
                 }).catch(function(err) {
-                    console.log('ERROR: findAnswers - ' + error);
+                    console.log('ERROR: findAnswers - ' + err);
                     callback(err, null);
                 });
             }
