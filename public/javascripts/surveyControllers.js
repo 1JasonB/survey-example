@@ -7,7 +7,17 @@ angular.module('surveyBuilder.surveyControllers', [])
     console.log('Init question factory...');
     o.getQuestion = function() {
         return $http.get('/nextquestion').success(function(data){
-            angular.copy(data, o.question);
+            if (data.text)
+            {
+                angular.copy(data, o.question);
+            }
+            else
+            {
+                // No more questions for this user
+                console.log('No more questions.');
+                o.text = 'No more questions';
+                o.choices = [];
+            }
         });
     };
     return o;

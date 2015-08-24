@@ -27,6 +27,7 @@
 		426FB3691B8A79D30080D9E7 /* question.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = question.html; sourceTree = "<group>"; };
 		426FB36A1B8A7ABA0080D9E7 /* surveyControllers.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = surveyControllers.js; path = javascripts/surveyControllers.js; sourceTree = "<group>"; };
 		426FB36B1B8A83220080D9E7 /* newquestion.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = newquestion.html; sourceTree = "<group>"; };
+		426FB36C1B8B55320080D9E7 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -35,6 +36,7 @@
 			children = (
 				426FB3531B851FF80080D9E7 /* app.js */,
 				426FB3541B852CEE0080D9E7 /* package.json */,
+				426FB36C1B8B55320080D9E7 /* README */,
 				426FB35E1B879F520080D9E7 /* routes */,
 				426FB35C1B867EC00080D9E7 /* views */,
 				426FB3581B865F0D0080D9E7 /* public */,

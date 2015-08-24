@@ -102,5 +102,28 @@ module.exports = function(db) {
         });
     });
 
+    router.get('/nextquestion', function(req, res, next) {
+        console.log('NEXT QUESTION FOR: ' + req.session.username);
+        if (!req.session.userid)
+        {
+            res.status(500).send({'Unauthorized');
+        }
+        db.Question.getNewQuestionForUser(req.session.userid, function(err, question) {
+        
+            if (question)
+            {
+                req.status(200).send(question);
+            }
+            else
+            {
+                if (err)
+                {
+                    console.log('ERROR: getNewQuestion - ' + error);
+                }
+                req.status(200).send('No more questions');
+            }
+        });
+    });
+
     return router;
 };
