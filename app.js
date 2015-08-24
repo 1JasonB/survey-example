@@ -116,7 +116,7 @@ function addUser(name, password)
 function initDB(callback)
 {
     //sync the model with the database
-    db.sequelize.sync({ force: false }).then(function() {
+    db.sequelize.sync({ force: true }).then(function() {
     
         console.log("DB Synch'd...");
         callback();

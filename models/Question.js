@@ -2,6 +2,10 @@
 // Question, Choice, and Answer models
 module.exports = function(sequelize, DataTypes) {
 
+	var getRnd = function(min, max) {
+		return Math.floor(Math.random() * (max - min + 1)) + min;
+	};
+
     var Answer = sequelize.define("Answer", {
         UserId: DataTypes.INTEGER,
     }, {
@@ -89,8 +93,15 @@ module.exports = function(sequelize, DataTypes) {
                 
                 var question = Question.build({text: questionText});
                 question.save().then(function(newQuestion) {
-                    console.log('Adding ' + choices.length + ' to question: ' + newQuestion.text);
-                    Question.addChoices(newQuestion, choices, callback);
+                    if (choices && choices.length)
+                    {
+                        console.log('Adding ' + choices.length + ' to question: ' + newQuestion.text);
+                        Question.addChoices(newQuestion, choices, callback);
+                    }
+                    else
+                    {
+                        callback('New question requires choices', null);
+                    }
                 }).catch(function(error) {
                     console.log('ERROR: addQuestion - ' + error);
                     callback(error, null);
@@ -101,7 +112,8 @@ module.exports = function(sequelize, DataTypes) {
                 // Get users previous answers
                 var answers = Answer.answersForUser(userId, function(err, answers) {
                     var newQuestions = [],
-                        oldQuestions = [0];
+                        oldQuestions = [0],
+                        nextQuestion = null;
                         
                     if (answers && answers.length)
                     {
@@ -114,11 +126,25 @@ module.exports = function(sequelize, DataTypes) {
                     newQuestions = Question.findAll({
                         where: {id: {$notIn:oldQuestions}}
                     }).then(function(questions) {
+                        var id;
                         if (questions && questions.length)
                         {
+                            id = getRnd(0, questions.length - 1);
                             console.log('...found ' + questions.length + ' questions for user');
-                            console.log('...returning ' + JSON.stringify(questions[0]));
-                            callback(null, questions[0]);
+                            console.log('...selected question ' + id + ': ' + JSON.stringify(questions[id]));
+                            Choice.findAll({
+                                where:{QuestionId: questions[id].id}
+                            }).then(function(questionChoices) {
+                                nextQuestion = {
+                                    text: questions[id].text,
+                                    choices: questionChoices,
+                                };
+                                console.log('...returning question: ' + JSON.stringify(nextQuestion));
+                                callback(null, nextQuestion);
+                            }).error(function(error) {
+                                console.log('ERROR: findQuestionChoices ' + error);
+                                callback(error, null);
+                            });
                         }
                         else
                         {
