@@ -106,7 +106,9 @@ module.exports = function(db) {
         console.log('NEXT QUESTION FOR: ' + req.session.username);
         if (!req.session.userid)
         {
+            console.log('ERROR: No user ID');
             res.status(500).send('Unauthorized');
+            return;
         }
         db.Question.getNewQuestionForUser(req.session.userid, function(err, question) {
         

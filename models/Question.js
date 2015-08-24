@@ -16,11 +16,14 @@ module.exports = function(sequelize, DataTypes) {
             },
 
             answersForUser: function(userId, callback) {
+                console.log('...find answers for ' + userId);
                 Answer.find({
                     where: {'UserId': userId}
-                }).success(function(answers) {
+                }).then(function(answers) {
+                    console.log('...found ' + answers.length + ' answers');
                     callback(null, answers);
-                }).error(function(err) {
+                }).catch(function(err) {
+                    console.log('ERROR: findAnswers - ' + error);
                     callback(err, null);
                 });
             }
@@ -56,9 +59,9 @@ module.exports = function(sequelize, DataTypes) {
             getChoices: function(callback) {
                 Choice.find({
                     where: {QuestionId: this.id},
-                }).success(function(choices) {
+                }).then(function(choices) {
                     callback(null, choices);
-                }).error(function(err) {
+                }).catch(function(err) {
                     callback(err, null);
                 });
             },
@@ -88,9 +91,19 @@ module.exports = function(sequelize, DataTypes) {
                     // Get new questions
                     newQuestions = Question.find({
                         where: {id: {$notIn:oldQuestions}}
-                    }).success(function(questions) {
-                        callback(null, questions[0]);
-                    }).error(function(err) {
+                    }).then(function(questions) {
+                        console.log('...found ' + questions.length + ' for user');
+                        if (questions.length)
+                        {
+                            console.log('...found ' + questions.length + ' for user');
+                            callback(null, questions[0]);
+                        }
+                        else
+                        {
+                            callback(null, null);
+                        }
+                    }).catch(function(err) {
+                        console.log('ERROR: getNewQuestions - ' + err);
                         callback(err, null);
                     });
                 });
