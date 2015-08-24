@@ -112,6 +112,7 @@ module.exports = function(db) {
         }
         db.Question.getNewQuestionForUser(req.session.userid, function(err, question) {
         
+            console.log('nextquestion: ' + question);
             if (question)
             {
                 res.status(200).send(question);

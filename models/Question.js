@@ -115,6 +115,7 @@ module.exports = function(sequelize, DataTypes) {
                         if (questions && questions.length)
                         {
                             console.log('...found ' + questions.length + ' questions for user');
+                            console.log('...returning ' + JSON.stringify(questions[0]));
                             callback(null, questions[0]);
                         }
                         else
