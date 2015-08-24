@@ -69,5 +69,22 @@ module.exports = function(db) {
         }
     });
 
+    router.get('/getquestions', function(req, res, next) {
+        console.log('GET QUESTIONS');
+        db.Question.findAll()
+        .then(function(questions) {
+
+            if (questions && questions.length)
+            {
+                console.log(questions.length + ' questions');
+                res.send(questions);
+            }
+            else
+            {
+                res.status(404).send('No questions');
+            }
+        });
+    });
+
     return router;
 };

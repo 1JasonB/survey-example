@@ -3,8 +3,8 @@
 </div>
 
 <div>
-<a href="/users.html">Users</a>
-<a href="/newquestion.html">Questions</a>
+<a href="#/users">Users</a>
+<a href="#/newquestion">Questions</a>
 </div>
 
 <div ng-repeat="question in questions">
@@ -22,16 +22,16 @@
     </div>
 
     <div class="form-group">
-        <input type="text" class="form-control" placeholder="Answer" ng-model="answerText1"></input>
+        <input type="text" class="form-control" placeholder="Answer Choice 1" ng-model="answerText1"></input>
     </div>
     <div class="form-group">
-        <input type="text" class="form-control" placeholder="Answer" ng-model="answerText2"></input>
+        <input type="text" class="form-control" placeholder="Answer Choice 2" ng-model="answerText2"></input>
     </div>
     <div class="form-group">
-        <input type="text" class="form-control" placeholder="Answer" ng-model="answerText3"></input>
+        <input type="text" class="form-control" placeholder="Answer Choice 3" ng-model="answerText3"></input>
     </div>
     <div class="form-group">
-        <input type="text" class="form-control" placeholder="Answer" ng-model="answerText4"></input>
+        <input type="text" class="form-control" placeholder="Answer Choice 4" ng-model="answerText4"></input>
     </div>
     
     <button type="submit" class="btn btn-primary">Submit Question</button>
