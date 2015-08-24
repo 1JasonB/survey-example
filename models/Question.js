@@ -109,6 +109,7 @@ module.exports = function(sequelize, DataTypes) {
                         }
                         else
                         {
+                            console.log('...found 0 question for user');
                             callback(null, null);
                         }
                     }).catch(function(err) {
