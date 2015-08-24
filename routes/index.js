@@ -77,11 +77,11 @@ module.exports = function(db) {
             if (questions && questions.length)
             {
                 console.log(questions.length + ' questions');
-                res.send(questions);
+                res.status(200).send(questions);
             }
             else
             {
-                res.status(404).send('No questions');
+                res.status(200).send([]);
             }
         });
     });
