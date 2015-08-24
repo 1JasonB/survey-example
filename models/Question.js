@@ -63,6 +63,7 @@ module.exports = function(sequelize, DataTypes) {
                         Choice.create({text: choices[i],
                                        QuestionId: this.id  });
                     }
+                    console.log('Added Choices...');
                     callback(0, this);
                 }
                 else
