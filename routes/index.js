@@ -44,6 +44,7 @@ module.exports = function(db) {
                 console.log(req.body.username + ' is now logged in.');
                 req.session.loggedIn = true;
                 req.session.username = user.username;
+                req.session.userid = user.id;
                 res.status(200).send();
             }
             else

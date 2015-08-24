@@ -70,6 +70,7 @@ module.exports = function(sequelize, DataTypes) {
                 question.save().then(function(newQuestion) {
                     newQuestion.addChoices(choices, callback);
                 }).catch(function(error) {
+                    console.log('ERROR: addQuestion - ' + error);
                     callback(error, null);
                 });
             },

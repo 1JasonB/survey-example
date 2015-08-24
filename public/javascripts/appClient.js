@@ -37,7 +37,12 @@ function($stateProvider, $urlRouterProvider) {
     .state('question', {
         url: '/question',
         templateUrl: '/question.html',
-        controller: 'SurveyController'
+        controller: 'SurveyController',
+        resolve: {
+            questionPromise: ['question', function(question){
+              return question.getQuestion();
+            }]
+        }
     })
     .state('newquestion', {
         url: '/newquestion',

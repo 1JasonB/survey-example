@@ -1,7 +1,7 @@
 angular.module('surveyBuilder.surveyControllers', [])
 .factory('question', ['$http', function($http){
     var o = {
-        question: 'Sample question',
+        text: 'Sample question',
         choices: [{text: 'Answer 1'}, {text: 'Answer 2'}, {text: 'Answer 3'}, {text: 'Answer 4'}],
     };
     console.log('Init question factory...');
@@ -16,7 +16,7 @@ angular.module('surveyBuilder.surveyControllers', [])
 '$scope',
 'question',
 function($scope, question) {
-    $scope.question = question.question;
+    $scope.question = question.text;
     $scope.choices = question.choices;
 
     $scope.submitAnswer = function() {
