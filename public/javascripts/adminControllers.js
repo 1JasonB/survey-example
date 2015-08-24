@@ -27,7 +27,7 @@ angular.module('surveyBuilder.adminControllers', [])
     };
     console.log('Init questionList factory...');
     o.getAll = function() {
-        return $http.get('/getquestion').success(function(data){
+        return $http.get('/getquestions').success(function(data){
             angular.copy(data, o.questionList);
         }).error(function(error) {
             console.log('No questions found.');
