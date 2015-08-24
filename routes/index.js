@@ -85,6 +85,18 @@ module.exports = function(db) {
         }
     });
 
+    router.post('/answer', function(req, res, next) {
+        console.log('NEW ANSWER POST: ' + JSON.stringify(req.body));
+        if (req.session && req.session.userid)
+        {
+            res.status(200).send();
+        }
+        else
+        {
+            res.status(500).send('Unauthorized');
+        }
+    });
+
     router.get('/getquestions', function(req, res, next) {
         console.log('GET QUESTIONS');
         db.Question.findAll()

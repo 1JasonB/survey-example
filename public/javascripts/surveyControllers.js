@@ -29,14 +29,24 @@ angular.module('surveyBuilder.surveyControllers', [])
 }])
 .controller('SurveyController', [
 '$scope',
+'$http',
 'question',
-function($scope, question) {
+function($scope, $http, question) {
     console.log('Initial question: ' + JSON.stringify(question.question));
     $scope.question = question.question.text;
     $scope.choices = question.question.choices;
 
     $scope.submitAnswer = function() {
-        console.log('Answered question.');
+        console.log('Answered question: ' + $scope.choiceId);
+        answer = {
+            ChoiceId: $scope.choiceId;
+            QuestionId: question.question.id,
+        };
+        $http.post('/answer', answer).success(function(data, status, headers, config) {
+            
+        }).error(function(data, status, headers, config) {
+            console.log("ERROR: Could not answer - " + data);
+        });
     };
 }]);
 

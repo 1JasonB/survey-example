@@ -136,6 +136,7 @@ module.exports = function(sequelize, DataTypes) {
                                 where:{QuestionId: questions[id].id}
                             }).then(function(questionChoices) {
                                 nextQuestion = {
+                                    QuestionId: questions[id].id,
                                     text: questions[id].text,
                                     choices: questionChoices,
                                 };
