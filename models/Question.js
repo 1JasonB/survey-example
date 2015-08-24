@@ -95,8 +95,7 @@ module.exports = function(sequelize, DataTypes) {
                     newQuestions = Question.find({
                         where: {id: {$notIn:oldQuestions}}
                     }).then(function(questions) {
-                        console.log('...found ' + questions.length + ' for user');
-                        if (questions.length)
+                        if (questions && questions.length)
                         {
                             console.log('...found ' + questions.length + ' for user');
                             callback(null, questions[0]);

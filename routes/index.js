@@ -120,7 +120,7 @@ module.exports = function(db) {
             {
                 if (err)
                 {
-                    console.log('ERROR: getNewQuestion - ' + error);
+                    console.log('ERROR: getNewQuestion - ' + err);
                 }
                 req.status(200).send('No more questions');
             }
