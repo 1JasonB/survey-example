@@ -12,19 +12,20 @@ module.exports = function(sequelize, DataTypes) {
         classMethods: {
             addAnswer: function(userId, choiceId, questionId, callback) {
                 
-                console.log('New answer from: ' + userId);
-                console.log('   Question: ' + questionId);
-                console.log('   Choice: ' + choiceId);
-                
-                callback(0, 0);
-                
-                /*
                 Answer.create({
                     UserId: userId,
                     ChoiceId: choiceId,
                     QuestionId: questionId,
+                }).then(function(answer) {
+                    console.log('New answer from: ' + answer.UserId);
+                    console.log('   Question: ' + answer.QuestionId);
+                    console.log('   Choice: ' + answer.ChoiceId);
+                    
+                    callback(null, answer);
+                }).error(function(error) {
+                    console.log('ERROR: new Answer - ' + error);
+                    callback(error, null);
                 });
-                */
             },
 
             answersForUser: function(userId, callback) {
