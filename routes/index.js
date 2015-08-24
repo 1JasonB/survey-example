@@ -114,7 +114,7 @@ module.exports = function(db) {
         
             if (question)
             {
-                req.status(200).send(question);
+                res.status(200).send(question);
             }
             else
             {
@@ -122,7 +122,7 @@ module.exports = function(db) {
                 {
                     console.log('ERROR: getNewQuestion - ' + err);
                 }
-                req.status(200).send('No more questions');
+                res.status(200).send('No more questions');
             }
         });
     });
