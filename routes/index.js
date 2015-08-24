@@ -69,6 +69,21 @@ module.exports = function(db) {
         }
     });
 
+    router.post('/newquestion', function(req, res, next) {
+        console.log('NEW QUESTION POST: ' + JSON.stringify(req.body));
+        if ((req.session) && (req.session.username === 'admin'))
+        {
+            res.status(200).send();
+            db.Question.addQuestion(req.body.text, req.body.choices, function(err, newQuestion) {
+                
+            });
+        }
+        else
+        {
+            res.status(500).send('Unauthorized');
+        }
+    });
+
     router.get('/getquestions', function(req, res, next) {
         console.log('GET QUESTIONS');
         db.Question.findAll()
