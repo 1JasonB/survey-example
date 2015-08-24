@@ -6,10 +6,10 @@ angular.module('surveyBuilder.surveyControllers', [])
     };
     console.log('Init question factory...');
     o.getQuestion = function() {
-        return $http.get('/getquestion').success(function(data){
+        return $http.get('/nextquestion').success(function(data){
             angular.copy(data, o.question);
         });
-    };    
+    };
     return o;
 }])
 .controller('SurveyController', [

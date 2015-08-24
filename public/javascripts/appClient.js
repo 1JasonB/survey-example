@@ -42,7 +42,12 @@ function($stateProvider, $urlRouterProvider) {
     .state('newquestion', {
         url: '/newquestion',
         templateUrl: '/newquestion.html',
-        controller: 'NewQuestionController'
+        controller: 'NewQuestionController',
+        resolve: {
+            questionListPromise: ['questionList', function(questionList) {
+              return questionList.getAll();
+            }]
+        }
     })
     //$urlRouterProvider.otherwise('home');
 }])
