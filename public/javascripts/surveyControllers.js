@@ -40,7 +40,7 @@ function($scope, $http, question) {
         console.log('Answered question: ' + $scope.answer);
         answer = {
             ChoiceId: $scope.answer,
-            QuestionId: question.question.id,
+            QuestionId: question.question.QuestionId,
         };
         $http.post('/answer', answer).success(function(data, status, headers, config) {
             
