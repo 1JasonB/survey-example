@@ -54,6 +54,11 @@ function($stateProvider, $urlRouterProvider) {
             }]
         }
     })
+    .state('results', {
+        url: '/results',
+        templateUrl: '/results.html',
+        controller: 'ResultsController'
+    })
     //$urlRouterProvider.otherwise('home');
 }])
 .factory('posts', [function(){

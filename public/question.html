@@ -8,8 +8,10 @@
 
 <span ng-show='submittedAnswer'>
 <h2>Thank you!</h2>
+<p><hr></p>
 </span>
 
+<span ng-hide='submittedAnswer'>
 <form role="form" ng-submit="submitAnswer()" style="margin-top:30px;">
     <div ng-repeat="choice in choices" class="radio">
         <label>
@@ -20,3 +22,4 @@
     <p><hr></p>
     <button type="submit" class="btn btn-primary">Submit Answer</button>
 </form>
+</span>
