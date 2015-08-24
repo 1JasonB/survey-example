@@ -30,7 +30,7 @@ module.exports = function(sequelize, DataTypes) {
 
             answersForUser: function(userId, callback) {
                 console.log('...find answers for ' + userId);
-                Answer.find({
+                Answer.findAll({
                     where: {'UserId': userId}
                 }).then(function(answers) {
                     if (answers)
