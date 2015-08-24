@@ -89,7 +89,7 @@ module.exports = function(db) {
         console.log('NEW ANSWER POST: ' + JSON.stringify(req.body));
         if (req.session && req.session.userid)
         {
-            Answer.addAnswer(req.session.userid, req.body.ChoiceId, req.body.QuestionId, function(err, answer) {
+            db.Answer.addAnswer(req.session.userid, req.body.ChoiceId, req.body.QuestionId, function(err, answer) {
                 res.status(200).send();
             });
         }
