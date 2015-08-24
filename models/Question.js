@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
         UserId: DataTypes.INTEGER,
     }, {
         classMethods: {
-            addAnswer: function(userID, choiceId, questionId, callback) {
+            addAnswer: function(userId, choiceId, questionId, callback) {
                 
                 console.log('New answer from: ' + userId);
                 console.log('   Question: ' + questionId);

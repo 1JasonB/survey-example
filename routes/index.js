@@ -86,7 +86,7 @@ module.exports = function(db) {
     });
 
     router.post('/answer', function(req, res, next) {
-        console.log('NEW ANSWER POST: ' + JSON.stringify(req.body));
+        console.log('NEW ANSWER POST from User ID ' + req.session.userid + ': ' + JSON.stringify(req.body));
         if (req.session && req.session.userid)
         {
             db.Answer.addAnswer(req.session.userid, req.body.ChoiceId, req.body.QuestionId, function(err, answer) {
