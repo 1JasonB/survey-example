@@ -99,18 +99,18 @@ app.get('/users', function(req, res) {
 
 function addUser(name, password)
 {
-        var User = db.User;
-        var user = User.addUser(name, password, function(err, newUser) {
-            if (newUser)
-            {
-                console.log(newUser);
-                SVY_User = newUser;
-            }
-            else
-            {
-                console.log('ERROR: ' + err);
-            }
-        });
+    var User = db.User;
+    var user = User.addUser(name, password, function(err, newUser) {
+        if (newUser)
+        {
+            console.log(newUser);
+            SVY_User = newUser;
+        }
+        else
+        {
+            console.log('ERROR: ' + err);
+        }
+    });
 }
 
 function initDB(callback)

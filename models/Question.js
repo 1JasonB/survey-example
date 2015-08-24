@@ -50,6 +50,7 @@ module.exports = function(sequelize, DataTypes) {
                     Choice.create({text: choices[i],
                                    QuestionId: this.id  });
                 }
+                callback(0, this);
             },
             
             getChoices: function(callback) {
@@ -67,7 +68,7 @@ module.exports = function(sequelize, DataTypes) {
                 
                 var question = Question.build({text: questionText});
                 question.save().then(function(newQuestion) {
-                    callback(0, newQuestion);
+                    newQuestion.addChoices(choices, callback);
                 }).catch(function(error) {
                     callback(error, null);
                 });
