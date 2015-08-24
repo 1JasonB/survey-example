@@ -109,7 +109,7 @@ module.exports = function(sequelize, DataTypes) {
                         });
                     }
                     // Get new questions
-                    newQuestions = Question.find({
+                    newQuestions = Question.findAll({
                         where: {id: {$notIn:oldQuestions}}
                     }).then(function(questions) {
                         if (questions && questions.length)
