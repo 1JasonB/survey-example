@@ -76,7 +76,6 @@ function($scope, questionList) {
                 {text: $scope.answerText4},
             ]
          });
-        $scope.questions.push({text: $scope.questionText});
         $scope.questionText = '';
         $scope.answerText1 = '';
         $scope.answerText2 = '';
