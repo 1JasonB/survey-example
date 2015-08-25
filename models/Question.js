@@ -9,21 +9,21 @@ module.exports = function(sequelize, DataTypes) {
     // Return questions indexed by question ID
     function initQuestionSummary(questions, choices)
     {
-        var summary = {};
+        var i, summary = {};
         
-        for (var question in questions)
+        for (i = 0; i < questions.length; i++)
         {
-            summary[question.id] = {
-                text: question.text,
+            summary[questions[i].id] = {
+                text: questions[i].text,
                 choices: {}
             };
         }
 
-        for (var choice in choices)
+        for (i = 0; i < choices.length; i++)
         {
-            choice.count = 0;
-            summary[choice.QuestionId].choices[choice.id] = {
-                text: choice.text,
+            choices[i].count = 0;
+            summary[choices[i].QuestionId].choices[choices[i].id] = {
+                text: choices[i].text,
                 count: 0
             };
         }
@@ -34,11 +34,11 @@ module.exports = function(sequelize, DataTypes) {
     // Total the number of answer for each choice and add to question summary
     function summarizeAnswers(questions, choices, answers)
     {
-        var questionsSummary = initQuestionSummary(questions, choices);
+        var i, questionsSummary = initQuestionSummary(questions, choices);
         
-        for (var answer in answers)
+        for (i = 0; i < answers.length; i++)
         {
-            questionsSummary[answer.QuestionId].choices[answer.ChoiceId].count++;
+            questionsSummary[answers[i].QuestionId].choices[answers[i].ChoiceId].count++;
         }
         
         return questionsSummary;
