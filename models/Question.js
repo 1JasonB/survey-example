@@ -5,6 +5,44 @@ module.exports = function(sequelize, DataTypes) {
 	var getRnd = function(min, max) {
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	};
+    
+    // Return questions indexed by question ID
+    function initQuestionSummary(questions, choices)
+    {
+        var summary = {};
+        
+        for (var question in questions)
+        {
+            summary[question.id] = {
+                text: question.text,
+                choices: {}
+            };
+        }
+
+        for (var choice in choices)
+        {
+            choice.count = 0;
+            summary[choice.QuestionId].choices[choice.id] = {
+                text: choice.text,
+                count: 0
+            };
+        }
+
+        return summary;
+    }
+    
+    // Total the number of answer for each choice and add to question summary
+    function summarizeAnswers(questions, choices, answers)
+    {
+        var questionsSummary = initQuestionSummary(questions, choices);
+        
+        for (var answer in answers)
+        {
+            questionsSummary[answer.QuestionId].choices[answer.ChoiceId].count++;
+        }
+        
+        return questionsSummary;
+    }
 
     var Answer = sequelize.define("Answer", {
         UserId: DataTypes.INTEGER,
@@ -163,12 +201,29 @@ module.exports = function(sequelize, DataTypes) {
                 Question.findAll()
                 .then(function(questions) {
 
+                    console.log(questions.length + ' questions');
+                    resultsSummary.questionCount = questions.length;
+
                     if (questions && questions.length)
                     {
-                        console.log(questions.length + ' questions');
-                        resultsSummary.questionCount = questions.length;
-                      
-                        callback(null, resultsSummary);
+                        Choice.findAll()
+                        .then(function(choices) {
+                            Answer.findAll()
+                            .then(function(answers) {
+                                resultsSummary.answerSummary = summarizeAnswers(questions, choices, answers);
+                                console.log('RESULTS:');
+                                console.log(JSON.stringify(resultsSummary.answerSummary));
+                                callback(null, resultsSummary);
+                            })
+                            .catch(function(error) {
+                                console.log('ERROR: findAll Answers - ' - error);
+                                callback(null, {status:'none'});
+                            });
+                        })
+                        .catch(function(error) {
+                            console.log('ERROR: findAll Choices - ' - error);
+                            callback(null, {status:'none'});
+                        });
                     }
                     else
                     {

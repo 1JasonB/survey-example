@@ -125,5 +125,6 @@ function($scope, questionList) {
 'resultsSummary',
 function($scope, resultsSummary) {
     $scope.questionCount = resultsSummary.results.questionCount;
+    $scope.results = resultsSummary.results.answerSummary;
 }]);
 

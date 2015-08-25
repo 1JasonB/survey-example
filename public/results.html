@@ -15,4 +15,21 @@
 
 <hr>
 
+<div ng-repeat="question in results.answerSumary">
+
+    <span style="font-size:20px; margin-left:10px;">
+        {{result.text}}
+    </span>
+
+    <div ng-repeat="choice in question.choices">
+
+        <span style="font-size:20px; margin-left:10px;">
+            {{choice.text}}: {{choice.count}}
+        </span>
+    </div>
+
+</div>
+
+<hr>
+
 
