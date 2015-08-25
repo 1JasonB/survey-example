@@ -52,7 +52,12 @@ function($stateProvider, $urlRouterProvider) {
     .state('results', {
         url: '/results',
         templateUrl: '/results.html',
-        controller: 'ResultsController'
+        controller: 'ResultsController',
+        resolve: {
+            resultsPromise: ['resultsSummary', function(resultsSummary){
+              return resultsSummary.getAll();
+            }]
+        }
     });
     $urlRouterProvider.otherwise('login');
 }])
