@@ -168,12 +168,15 @@ module.exports = function(sequelize, DataTypes) {
                         console.log(questions.length + ' questions');
                         resultsSummary.questionCount = questions.length;
                       
-                        res.send(resultsSummary);
+                        callback(null, resultsSummary);
                     }
                     else
                     {
-                        res.send({status:'none'});
+                        callback(null, {status:'none'});
                     }
+                }).catch(function(error) {
+                    console.log('ERROR: resultsSummary - ' + error);
+                    callback(error, {status:'none'});
                 });
             },
 
