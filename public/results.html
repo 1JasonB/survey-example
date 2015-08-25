@@ -20,14 +20,14 @@
     <span style="font-size:20px; margin-left:10px;">
         {{question.text}}
     </span>
+    <ul>
+        <div ng-repeat="choice in question.choices">
 
-    <div ng-repeat="choice in question.choices">
-
-        <span style="font-size:20px; margin-left:10px;">
-            {{choice.text}}: {{choice.count}}
-        </span>
-    </div>
-
+            <span style="font-size:16px; margin-left:10px;">
+                <li>{{choice.text}}: {{choice.count}}</li>
+            </span>
+        </div>
+    </ul>
 </div>
 
 <hr>
