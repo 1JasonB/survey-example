@@ -65,18 +65,6 @@ module.exports = function(sequelize, DataTypes) {
     //    user_id: Sequelize.INT,
         text: DataTypes.STRING,
     }, {
-        instanceMethods: {
-            
-            getChoices: function(callback) {
-                Choice.find({
-                    where: {QuestionId: this.id},
-                }).then(function(choices) {
-                    callback(null, choices);
-                }).catch(function(err) {
-                    callback(err, null);
-                });
-            },
-        },
         classMethods: {
             addChoices: function(question, choices, callback) {
                 var i;

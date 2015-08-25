@@ -1,5 +1,19 @@
 // Survey app: Node, MySQL
 
+// Environment
+var SVY_PORT = 4227,            // App port
+    SVY_Admin = {               // Default admin user added to fresh DB
+        username: 'admin',
+        password: 'admin'
+    },
+    SVY_sqlConfig = {           // Assumes this MYSQL database and user account
+        dbName: 'survey',
+        username: 'app',
+        password: 'app',
+    },
+    SVY_forceNewDB = false;     // Set true to start DB from scratch
+
+// External modules
 var express = require('express');
 var session = require('express-session');
 var app = express();
@@ -7,25 +21,23 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var db = require('./models/index')();
-
+// Database models
+var db = require('./models/index')(SVY_sqlConfig);
+// App URL routes
 var routes = require('./routes/index')(db);
-// var users = require('./routes/users');
 
-// view engine setup
+// Express config
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
+// Use session for attaching user IDs to requests
 app.use(session({secret: 'survey-builder'}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/', routes);
-// app.use('/users', users);
 
-// catch 404 and forward to error handler
+// Catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
@@ -33,10 +45,9 @@ app.use(function(req, res, next) {
 });
 
 
-// error handlers
+// Error handlers
 
-// development error handler
-// will print stacktrace
+// Development error handler will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
@@ -47,8 +58,7 @@ if (app.get('env') === 'development') {
   });
 }
 
-// production error handler
-// no stacktraces leaked to user
+// Production error handler no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
@@ -57,66 +67,10 @@ app.use(function(err, req, res, next) {
   });
 });
 
-
-// Environment
-var SVY_SQLPORT = 2835,
-    APP_PORT = 4227;
-
-/*
-var Question = sequelize.define("Question", {
-    question_id: Sequelize.INTEGER,
-    question: Sequelize.STRING,
-    count: Sequelize.INTEGER,
-}, {
-    instanceMethods: {
-        getChoices: function(question_id, onSuccess, onError) {
-            Choice,find({where:{question_id: question_id}}).success(onSuccess).error(onError);
-        },
-    }
-});
-
-var Choice = sequelize.define("Choice", {
-    choice: Sequelize.STRING,
-    question_id: Sequelize.INTEGER,
-    count: Sequelize.INTEGER,
-});
-
-var Answer = sequelize.define("Answer", {
-    user_id: Sequelize.INTEGER,
-    choice_id: Sequelize.INTEGER,
-    question_id: Sequelize.INTEGER,
-});
-
-Question.hasMany(Choice, {as: 'Choices'});
-// question.setChoices([choice]);
-*/
-
-var SVY_User = {username:null,password:null};
-
-app.get('/users', function(req, res) {
-    res.status(200).send(SVY_User);
-});
-
-function addUser(name, password)
-{
-    var User = db.User;
-    var user = User.addUser(name, password, function(err, newUser) {
-        if (newUser)
-        {
-            console.log(newUser);
-            SVY_User = newUser;
-        }
-        else
-        {
-            console.log('ERROR: ' + err);
-        }
-    });
-}
-
 function initDB(callback)
 {
-    //sync the model with the database
-    db.sequelize.sync({ force: false }).then(function() {
+    // Sync the model with the database
+    db.sequelize.sync({ force: SVY_forceNewDB }).then(function() {
     
         console.log("DB Synch'd...");
         callback();
@@ -125,11 +79,10 @@ function initDB(callback)
     });
 }
 
-// initializing a port
-app.listen(APP_PORT);
-console.log('...listening on port ' + APP_PORT);
+app.listen(SVY_PORT);
+console.log('...listening on port ' + SVY_PORT);
 initDB(function() {
-    // addUser('sam','sam');
-    // addUser('admin','admin');
+    db.User.ensureAdmin(SVY_Admin, function(error) {
+    });
 });
 

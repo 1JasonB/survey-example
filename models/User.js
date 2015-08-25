@@ -5,7 +5,6 @@ module.exports = function(sequelize, DataTypes) {
 
     // model definition
     var User = sequelize.define("User", {
-    //    user_id: Sequelize.INT,
         username: DataTypes.STRING,
         password: DataTypes.STRING,
     }, {
@@ -41,7 +40,37 @@ module.exports = function(sequelize, DataTypes) {
                     callback(error, null);
                 });
             },
-        }
+            // If we don't have an admin user, create one
+            ensureAdmin: function (adminUser, callback)
+            {
+                var user = User.findOne({
+                    where:{username: adminUser.username}
+                }).then(function(user) {
+                    if (user)
+                    {
+                        console.log('ADMIN USER FOUND.');
+                        callback(null);
+                    }
+                    else
+                    {
+                        User.addUser(adminUser, function(error, user) {
+                            if (user)
+                            {
+                                console.log('ADDED NEW ADMIN USER.');
+                            }
+                            else
+                            {
+                                console.log('ERROR: Add admin - ' + error);
+                            }
+                            callback(error);
+                        });
+                    }
+                }).catch(function(error) {
+                    console.log('ERROR: ensureAdmin - ' + error);
+                    callback(error);
+                });
+            }
+        },
     });
     
     return User;

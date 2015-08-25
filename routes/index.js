@@ -1,24 +1,16 @@
+
 module.exports = function(db) {
 
     var express = require('express');
     var router = express.Router();
 
-    /* GET home page. */
+    // GET home page.
     router.get('/', function(req, res, next) {
         console.log('RENDER INDEX');
         res.render('index', { title: 'Survey Builder' });
     });
 
-    router.get('/admin/', function(req, res, next) {
-        console.log('RENDER ADMIN');
-        res.render('admin', { title: 'Survey Builder Admin' });
-    });
-
-    router.get('/users/', function(req, res, next) {
-        console.log('RENDER USERS');
-        res.render('users', { title: 'Survey Builder - Users' });
-    });
-
+    // GET list of users
     router.get('/getusers', function(req, res, next) {
         console.log('GET USERS');
         db.User.findAll()
@@ -36,6 +28,7 @@ module.exports = function(db) {
         });
     });
 
+    // Login user
     router.post('/login', function(req, res, next) {
         console.log('LOGIN: ' + req.body.username);
         db.User.loginUser(req.body.username, req.body.password, function(err, user) {
@@ -55,6 +48,7 @@ module.exports = function(db) {
         });
     });
 
+    // POST new user (Admin only)
     router.post('/newuser', function(req, res, next) {
         console.log('NEW USER POST: ' + req.body.username);
         if ((req.session) && (req.session.username === 'admin'))
@@ -70,6 +64,7 @@ module.exports = function(db) {
         }
     });
 
+    // POST new question (admin only)
     router.post('/newquestion', function(req, res, next) {
         console.log('NEW QUESTION POST: ' + JSON.stringify(req.body));
         if ((req.session) && (req.session.username === 'admin'))
@@ -85,6 +80,7 @@ module.exports = function(db) {
         }
     });
 
+    // POST answer to question
     router.post('/answer', function(req, res, next) {
         console.log('NEW ANSWER POST from User ID ' + req.session.userid + ': ' + JSON.stringify(req.body));
         if (req.session && req.session.userid)
@@ -99,6 +95,7 @@ module.exports = function(db) {
         }
     });
 
+    // GET all questions (without answers)
     router.get('/getquestions', function(req, res, next) {
         console.log('GET QUESTIONS');
         db.Question.findAll()
@@ -116,6 +113,7 @@ module.exports = function(db) {
         });
     });
 
+    // GET next question for logged in user
     router.get('/nextquestion', function(req, res, next) {
         console.log('NEXT QUESTION FOR: ' + req.session.username);
         if (!req.session.userid)

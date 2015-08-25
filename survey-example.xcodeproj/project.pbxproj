@@ -34,9 +34,9 @@
 				426FB3541B852CEE0080D9E7 /* package.json */,
 				426FB36C1B8B55320080D9E7 /* README */,
 				426FB35E1B879F520080D9E7 /* routes */,
+				426FB3551B8632EA0080D9E7 /* models */,
 				426FB35C1B867EC00080D9E7 /* views */,
 				426FB3581B865F0D0080D9E7 /* public */,
-				426FB3551B8632EA0080D9E7 /* models */,
 			);
 			sourceTree = "<group>";
 		};

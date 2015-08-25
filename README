@@ -1,0 +1,8 @@
+
+Configuration:
+Set application port and admin username, password in app.js.
+
+Usage:
+Log in as admin user to add new users, new survey questions, or view results.
+Log in as any other user to get served a new survey question. Refresh for additional questions.
+

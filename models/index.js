@@ -1,10 +1,10 @@
 
-module.exports = function() {
+module.exports = function(sqlConfig) {
 
     console.log('Init index.js...');
     
     var Sequelize = require('sequelize'),
-        sequelize = new Sequelize('survey', 'app', 'app', {
+        sequelize = new Sequelize(sqlConfig.dbName, sqlConfig.username, sqlConfig.password, {
             dialect: 'mysql'
         });
 
