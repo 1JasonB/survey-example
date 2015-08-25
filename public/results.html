@@ -15,10 +15,10 @@
 
 <hr>
 
-<div ng-repeat="question in results.answerSumary">
+<div ng-repeat="question in results">
 
     <span style="font-size:20px; margin-left:10px;">
-        {{result.text}}
+        {{question.text}}
     </span>
 
     <div ng-repeat="choice in question.choices">
