@@ -144,7 +144,6 @@ module.exports = function(db) {
         console.log('GET RESULTS...');
         if ((req.session) && (req.session.username === 'admin'))
         {
-            res.status(200).send();
             db.Question.getResults(function(err, results) {
             
                 if (results)
@@ -157,7 +156,7 @@ module.exports = function(db) {
                     {
                         console.log('ERROR: getResults - ' + err);
                     }
-                    res.status(200).send({status:'none'});
+                    res.send({status:'none'});
                 }
                 
             });
