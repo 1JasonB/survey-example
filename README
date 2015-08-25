@@ -1,6 +1,10 @@
+Installation:
+(Assumes MySQL installed)
+npm install
 
 Configuration:
 Set application port and admin username, password in app.js.
+Change MySQL DB and account settings if desired.
 
 Usage:
 Log in as admin user to add new users, new survey questions, or view results.
