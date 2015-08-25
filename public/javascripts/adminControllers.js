@@ -42,6 +42,20 @@ angular.module('surveyBuilder.adminControllers', [])
     };
     return o;
 }])
+.factory('resultsSummary', ['$http', function($http){
+    var o = {
+        results: {
+            status:'ok',
+            questionCount: 3,
+        },
+    };
+    o.getAll = function() {
+        return $http.get('/results').success(function(data){
+            angular.copy(data, o.results);
+        });
+    };
+    return o;
+}])
 .controller('UsersController', [
 '$scope',
 'users',
@@ -108,7 +122,8 @@ function($scope, questionList) {
 }])
 .controller('ResultsController', [
 '$scope',
-function($scope) {
-
+'resultsSummary',
+function($scope, resultsSummary) {
+    $scope.questionCount = resultsSummary.results.questionCount;
 }]);
 

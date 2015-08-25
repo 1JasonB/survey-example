@@ -155,6 +155,27 @@ module.exports = function(sequelize, DataTypes) {
                     });
                 });
             },
+            
+            getResults: function(callback) {
+            
+                var resultsSummary = {status:'ok'};
+                
+                Question.findAll()
+                .then(function(questions) {
+
+                    if (questions && questions.length)
+                    {
+                        console.log(questions.length + ' questions');
+                        resultsSummary.questionCount = questions.length;
+                      
+                        res.send(resultsSummary);
+                    }
+                    else
+                    {
+                        res.send({status:'none'});
+                    }
+                });
+            },
 
             associate: function(models) {
                 Question.hasMany(models.Choice, { as : 'choices' });

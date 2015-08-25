@@ -140,5 +140,33 @@ module.exports = function(db) {
         });
     });
 
+    router.get('/results', function(req, res, next) {
+        console.log('GET RESULTS...');
+        if ((req.session) && (req.session.username === 'admin'))
+        {
+            res.status(200).send();
+            db.Question.getResults(function(err, results) {
+            
+                if (results)
+                {
+                    res.send(results);
+                }
+                else
+                {
+                    if (err)
+                    {
+                        console.log('ERROR: getResults - ' + err);
+                    }
+                    res.status(200).send({status:'none'});
+                }
+                
+            });
+        }
+        else
+        {
+            res.status(500).send('Unauthorized');
+        }
+    });
+
     return router;
 };
