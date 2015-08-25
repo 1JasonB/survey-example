@@ -30,7 +30,7 @@ var routes = require('./routes/index')(db);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 // Use session for attaching user IDs to requests
-app.use(session({secret: 'survey-builder'}));
+app.use(session({secret: 'survey-builder', resave: false, saveUninitialized: false}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
