@@ -53,6 +53,7 @@ module.exports = function(sequelize, DataTypes) {
                     }
                     else
                     {
+                        console.log('NO ADMIN USER FOUND - CREATING');
                         User.addUser(adminUser, function(error, user) {
                             if (user)
                             {

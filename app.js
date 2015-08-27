@@ -11,7 +11,7 @@ var SVY_PORT = 4227,            // App port
         username: 'app',
         password: 'app',
     },
-    SVY_forceNewDB = false;     // Set true to start DB from scratch
+    SVY_forceNewDB = true;     // Set true to start DB from scratch
 
 // External modules
 var express = require('express');
