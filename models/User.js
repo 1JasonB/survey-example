@@ -54,7 +54,7 @@ module.exports = function(sequelize, DataTypes) {
                     else
                     {
                         console.log('NO ADMIN USER FOUND - CREATING');
-                        User.addUser(adminUser, function(error, user) {
+                        User.addUser(adminUser.username, adminUser.password, function(error, user) {
                             if (user)
                             {
                                 console.log('ADDED NEW ADMIN USER.');
